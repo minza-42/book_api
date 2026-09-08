@@ -6,7 +6,7 @@ export const getAllReviews = async (_req: Request, res: Response) => {
   try {
     const result = await Review.find({}, { _id: 0 }); // TODO: Add .sort() and .populate() later for sorting and book population
     if (result.length === 0) {
-      return res.status(400).json({ error: 'No reviews found' });
+      return res.status(400).json({ error: 'No reviews found ya son of a bitch' });
     }
     return res.status(200).json(result);
   } catch (error) {
