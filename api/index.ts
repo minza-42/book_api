@@ -35,6 +35,12 @@ app.use(
     credentials: true, // Allows cookies sent to this API
   })
 );
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || 'http://localhost:3000', // This makes the Express server accept requests from other domains
+    credentials: true, // Allows cookies sent to this API
+  })
+);
 
 // Serve the static client (the HTML/CSS/JS in public/).
 // Read the line from the inside out:
@@ -76,9 +82,11 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 import authRouter from '../src/routes/auth';
 import greetingRouter from '../src/routes/greetings';
 import userRouter from '../src/routes/userRoutes';
+import reviewRouter from '../src/routes/reviewRoutes';
 app.use('/api/auth', authRouter);
 app.use('/api/greetings', greetingRouter);
 app.use('/api/users', userRouter);
+app.use('/api/review', reviewRouter);
 
 // Connect To DB
 import mongoose from 'mongoose';
