@@ -1,29 +1,25 @@
 # Book API
 ## Gruppmöte 1
 
-**Datum:**  
-**Deltagare:**  
+Datum: 8 / 9 2026
+Deltagare: Minai, Erik & Lollo
+
 
 ---
 
 ## 1. Ansvarsområden
 
 ### Users & Auth
-**Ansvarig:**  
-
-**Anteckningar:**  
+**Ansvarig: Lollo**  
 
 
 ### Books
-**Ansvarig:**  
 
-**Anteckningar:**  
+**Ansvarig: Minai**
 
 
 ### Reviews
-**Ansvarig:**  
-
-**Anteckningar:**  
+**Ansvarig: Erik**  
 
 
 ---
@@ -32,18 +28,58 @@
 
 **Beslut:**  
 
+### Mappstruktur
+
+API-grupp-3/
+├── api/
+│   └── index.ts
+│
+├── src/
+│   ├── controllers/
+│   │   ├── authController.ts
+│   │   ├── userController.ts
+│   │   ├── bookController.ts
+│   │   └── reviewController.ts
+│   │
+│   ├── middleware/
+│   │   └── verifyToken.ts
+│   │
+│   ├── models/
+│   │   ├── User.ts
+│   │   ├── Book.ts
+│   │   └── Review.ts
+│   │
+│   └── routes/
+│       ├── authRoutes.ts
+│       ├── userRoutes.ts
+│       ├── bookRoutes.ts
+│       └── reviewRoutes.ts
+│
+├── public/
+│   ├── To be continued
+│
+├── docs/
+│   └── meeting-1.md
+│
+├── .env
+├── .env.example
+├── .prettierrc
+├── .gitignore
+├── package.json
+└── README.md
+
 
 **Att göra:**  
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [skapa grundstruktur i trädet för backend] 
+- [ istallera prettier? ] 
+- [ Se till att alla gjort gitpull innan dagens slut] 
 
 ---
 
 ## 3. MongoDB
 
-**Databas:**  
+**Databas: fixat ✅**  
 
 **Collections:**
 
@@ -51,9 +87,8 @@
 - books
 - reviews
 
-**Ansvarig för Atlas:**  
+**Ansvarig för Atlas: Lollo**  
 
-**Anteckningar:**  
 
 
 ---
@@ -66,91 +101,43 @@ Variabler som projektet behöver:
 - `JWT_SECRET`
 - `NODE_ENV`
 - `CLIENT_URL`
+- `PORT = 3000`
 
-**Anteckningar:**  
-
-
----
-
-## 5. Koppling mellan Books & Reviews
-
-**Hur kopplas en review till en bok?**  
-
-
-**Hur ska `GET /api/books/:id` hanteras?**  
-
-
-**Övriga beslut:**  
-
+**Anteckningar: alla lägger in sina egna .env filer med rätt MONGODB_URL**  
 
 ---
 
 ## 6. Git & GitHub
 
-**Repository:**  
+**Repository: Skapat av Minai**  
 
-**Branch-struktur:**  
+**Branch-struktur:**
+- dev-erik
+- dev-minai
+- dev-lollo
 
 
-**Hur gör vi med Pull Requests / merge till main?**  
-
-
-**Övriga beslut:**  
-
+**Hur gör vi med Pull Requests / merge till main?** 
+Vi mergar till main tillsammans 
 
 ---
 
 ## 7. Gemensam setup
 
-**Ansvarig:**  
+**Ansvarig: ALLA TILLSAMMANS**  
 
-- [ ] Kontrollera starter template
-- [ ] MongoDB-anslutning
-- [ ] `.gitignore`
-- [ ] `.env.example`
-- [ ] Gemensam filstruktur
-- [ ] Kontrollera att projektet startar
+- [X] Kontrollera starter template
+- [X] MongoDB-anslutning
+- [X] `.gitignore`
+- [?] `.env.example`
+- [X] Gemensam filstruktur
+- [X] Kontrollera att projektet startar
 
-**Anteckningar:**  
-
-
----
-
-## 8. Deployment
-
-**Backend / Vercel:**  
-
-**Frontend:**  
-
-**Anteckningar:**  
-
-
----
-
-## 9. Frågor till läraren
-
-- [ ] 
-- [ ] 
-- [ ] 
-
-
----
-
-## 10. Nästa steg
-
-### Person 1
-- [ ] 
-
-### Person 2
-- [ ] 
-
-### Person 3
-- [ ] 
-
+**Anteckningar: Starta egna branches själva genom github-repo**  
 
 ---
 
 ## Nästa möte
 
-**Datum:**  
-**Vad ska vara klart tills dess:**  
+**Datum: 9/9 efter Eriks ledningsgruppmöte**  
+**Vad ska vara klart tills dess: Vi ska alla börja smått med våra ansvarsområden + egna branches**  
