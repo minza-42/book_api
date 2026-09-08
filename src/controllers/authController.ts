@@ -1,23 +1,77 @@
 import { Request, Response } from "express"
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import User from "../models/User"
 
-export const login = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
     const {username, password} = req.body
     if (username === undefined || password === undefined) {
         res.status(400).json({message: 'username and password are required'})
         return
     }
+    
+    try {
+        const existingUser = await User.findOne({username})
+        if (existingUser){
+            res.status(409).json({
+                message: 'Username already exists'
+            })
+            return
+        }
+        const hashedPassword = await bcrypt.hash(password, 10)
 
-    const hashedPassword = "$2b$10$WoiGUJIU1IB5VarJOe468eae0wHxD53MI9PJta2ohnBam2R72Kc2S"
+        const user = await User.create({
+            username,
+            password: hashedPassword
+        })
 
-    const isLoggedIn = await bcrypt.compare(password, hashedPassword)
-    if (username === 'admin' && password === '123') {
-        const accessToken = jwt.sign({username}, process.env.JWT_SECRET || "", {expiresIn: '7d'});
-        console.log(accessToken)
+        res.status(200).json({
+            message: 'You are registered',
+            username:user.username,
+        })
 
+    } catch (error) {
+                console.error(error);
 
-        res.cookie('accessToken', accessToken, {
+        res.status(500).json({
+        message: 'Internal server error',
+    })
+    }   
+}
+
+export const login = async (req: Request, res: Response) => {
+    try{
+        const {username, password} = req.body
+        if (username === undefined || password === undefined) {
+            res.status(400).json({message: 'username and password are required'})
+            return
+        }
+    
+        const user = await User.findOne({username})
+        if(!user) {
+            res.status(401).json ({
+                message: 'Invalid username OR password'
+            })
+            return
+        }
+    
+        const passwordMatch = await bcrypt.compare(password, user.password)
+        if (!passwordMatch){
+            res.status(401).json({
+                message: 'Invalid username OR password'
+            })
+            return
+        }
+
+        const accessToken = jwt.sign({
+            userId: user._id,
+            username: user.username,
+            is_admin: user.is_admin
+        }, 
+            process.env.JWT_SECRET || "", 
+            {expiresIn: '7d'});
+
+            res.cookie('accessToken', accessToken, {
             // Prevents client-side JavaScript from accessing the cookie (e.g. document.cookie).
             // This protects against XSS attacks where malicious scripts try to steal the token.
             httpOnly: true, // JS has no access to the cookie
@@ -35,32 +89,23 @@ export const login = async (req: Request, res: Response) => {
             // After this time the browser automatically deletes the cookie and the user must log in again.
             maxAge: 1000 * 60 * 60 * 24 * 7 // Lives on for 7 days
         })
-        res.json({message: 'You are logged in', isLoggedIn: isLoggedIn})
-        return;
-    } else {
-        res.status(401).json({message: 'username/password are wrong'})
-        return
+        res.json({
+            message: 'You are logged in',
+            user: {
+                id: user.id,
+                username: user.username,
+                is_admin:user.is_admin
+            }
+        })
+        
+    } catch(error){
+        console.error(error)
+        res.status(500).json({
+            message: 'Internal server error'
+        })
     }
 }
 
-export const register = async (req: Request, res: Response) => {
-    const {username, password} = req.body
-    if (username === undefined || password === undefined) {
-        res.status(400).json({message: 'username and password are required'})
-        return
-    }
-
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10)
-
-        // The hashedPassword is the value that should be saved in the DB, not the plain password. For security reasons
-        res.json({message: "You are registered", username: username, password: password, hashedPassword: hashedPassword})
-    } catch (e) {
-        console.log(e)
-    }
-
-    
-}
 
 export const logout = async (req: Request, res: Response) => {
     res.clearCookie('accessToken')

@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 
 export const greetingSpecific = async (req: Request, res: Response) => {
-    const name = req.params.name
+    const username = req.params.username
 
-    res.json({message: `Hello ${name}, welcome to your admin panel!`})
+    res.json({message: `Hello ${username}, welcome to your admin panel!`})
 }
