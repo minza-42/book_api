@@ -2,11 +2,11 @@ import express from 'express';
 import { getAllUsers, getUser, patchUser, deleteUser } from '../controllers/userController';
 import { verifyToken } from '../middleware/verifyToken';
 
-const userRouter = express.Router();
+const router = express.Router();
 
-userRouter.get('/', getAllUsers);
-userRouter.get('/:id', getUser);
-userRouter.post('/:id', patchUser);
-userRouter.delete('/:id', verifyToken, deleteUser);
+router.get('/', getAllUsers);
+router.get('/:id', getUser);
+router.post('/:id', patchUser);
+router.delete('/:id', verifyToken, deleteUser);
 
-export default userRouter;
+export default router;
