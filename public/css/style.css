@@ -1,3 +1,21 @@
+body {
+  font-family: 'Geologica', sans-serif;
+  color: #f5eeee;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(180deg, #080b0c 0%, #172328 35%, #304a52 70%, #527987 100%);
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.user-modal .modal-content {
+  background: linear-gradient(180deg, #080b0c 0%, #172328 35%, #304a52 70%, #527987 100%);
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .message {
   margin-top: 16px;
   padding: 12px;
