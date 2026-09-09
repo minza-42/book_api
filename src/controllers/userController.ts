@@ -21,3 +21,22 @@ export const fetchAllUsers = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const fetchUser = async (req: Request, res: Response) => {
+  const id = req.params.id as string;
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      res.status(404).json({
+        message: 'User not found',
+      });
+      return;
+    }
+    res.json(formatUser(user));
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Internal server error',
+    });
+  }
+};
