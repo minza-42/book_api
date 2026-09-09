@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import bcrypt from 'bcrypt';
 import User from '../models/User';
 import { formatUser } from '../utils/formatUser';
 
+//GET ALL
 export const fetchAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.find();
@@ -22,6 +24,7 @@ export const fetchAllUsers = async (req: Request, res: Response) => {
   }
 };
 
+// GET ONE
 export const fetchUser = async (req: Request, res: Response) => {
   const id = req.params.id as string;
   try {
@@ -40,3 +43,55 @@ export const fetchUser = async (req: Request, res: Response) => {
     });
   }
 };
+
+//UPDATE
+export const patchUser = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id as string;
+    const { username, password } = req.body;
+    if (username === undefined && password === undefined) {
+      res.status(400).json({ message: 'At least one field is required' });
+      return;
+    }
+    // No empty fileds allowed and mininum of characters
+    if (username !== undefined && username.trim().length < 3) {
+      res.status(400).json({
+        message: 'Unsername must be at least 3 characters',
+      });
+      return;
+    }
+    if (password !== undefined && password.trim().length < 6) {
+      res.status(400).json({
+        message: 'Password must be at least 6 characters',
+      });
+      return;
+    }
+
+    const patchFileds: Partial<{
+      username: string;
+      password: string;
+    }> = {};
+    if (username !== undefined) patchFileds.username = username;
+    if (password !== undefined) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      patchFileds.password = hashedPassword;
+    }
+    const result = await User.updateOne({ _id: id }, { $set: patchFileds });
+    if (result.matchedCount === 0) {
+      res.status(404).json({
+        message: 'User not found',
+      });
+      return;
+    }
+    res.json({
+      message: 'User is updated',
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Internal server error',
+    });
+  }
+};
+
+//DELETE
+export const deleteUser = async (req: Request, res: Response) => {};
