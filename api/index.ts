@@ -76,9 +76,11 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 import authRouter from '../src/routes/auth';
 import greetingRouter from '../src/routes/greetings';
 import userRouter from '../src/routes/userRoutes';
+import reviewRouter from '../src/routes/reviewRoutes';
 app.use('/api/auth', authRouter);
 app.use('/api/greetings', greetingRouter);
 app.use('/api/users', userRouter);
+app.use('/api/review', reviewRouter);
 
 // Connect To DB
 import mongoose from 'mongoose';
