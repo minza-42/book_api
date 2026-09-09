@@ -12,6 +12,7 @@ import {
 
 // Importerar middleware som kontrollerar om användaren har en giltig token
 import { verifyToken } from "../middleware/verifyToken";
+import { verifyAdmin } from "../middleware/verifyAdmin";
 
 // Skapar en router för books
 const router = Router();
