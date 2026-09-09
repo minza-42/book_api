@@ -77,10 +77,12 @@ import authRouter from '../src/routes/auth';
 import greetingRouter from '../src/routes/greetings';
 import userRouter from '../src/routes/userRoutes';
 import reviewRouter from '../src/routes/reviewRoutes';
+import bookRouter from '../src/routes/bookRoutes';
 app.use('/api/auth', authRouter);
 app.use('/api/greetings', greetingRouter);
 app.use('/api/users', userRouter);
 app.use('/api/review', reviewRouter);
+app.use('/api/books', bookRouter);
 
 // Connect To DB
 import mongoose from 'mongoose';
