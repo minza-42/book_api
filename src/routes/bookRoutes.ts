@@ -27,7 +27,7 @@ router.get("/:id", getBook);
 // POST /api/books
 // Skapar en ny bok
 // Kräver en giltig token
-router.post("/", verifyToken, createBook);
+router.post("/", verifyToken, verifyAdmin, createBook);
 
 // PATCH /api/books/:id
 // Uppdaterar en befintlig bok
