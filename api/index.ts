@@ -31,7 +31,7 @@ app.use(cookieParser());
 // same-origin client can use the API from a browser.
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:3000', // This makes the Express server accept requests from other domains
+    origin: process.env.CLIENT_URL || 'http://localhost:4000', // This makes the Express server accept requests from other domains
     credentials: true, // Allows cookies sent to this API
   })
 );
