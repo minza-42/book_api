@@ -35,6 +35,12 @@ app.use(
     credentials: true, // Allows cookies sent to this API
   })
 );
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || 'http://localhost:3000', // This makes the Express server accept requests from other domains
+    credentials: true, // Allows cookies sent to this API
+  })
+);
 
 // Serve the static client (the HTML/CSS/JS in public/).
 // Read the line from the inside out:
