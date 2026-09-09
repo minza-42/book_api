@@ -1,38 +1,59 @@
-// 1. Create an addEventlistener for the login button on click. The buttons ID is "#login-btn"
-document.getElementById("login-btn").addEventListener("click", function(event) {
+async function login() {
+  const API_URL = 'http://localhost:3000/api';
+  const loginForm = document.getElementById('login-form');
+
+  loginForm.addEventListener('submit', async function (event) {
     event.preventDefault();
-    // 2. SHould make a POST request to API_URL + "/auth/login", 
-    // with a body of {username: "username", password: "password"}. login credentials should be hardcoded.  
-    // And include "credentials: "include"
+    try {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
 
+      const response = await fetch(API_URL + '/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+        credentials: 'include',
+      });
 
-    // 3. Use async/await and try/catch to handle the response and any errors that may occur. If the response is successful, console log the data returned from the server.
-    async function login() {
-        try {
-            const response = await fetch(API_URL + "/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: "admin",
-                    password: "123"
-                }),
-                credentials: "include"
-            });
-            const data = await response.json();
-            // 4 On success, redirect to protected.html. On failure display an error message in #login-message
-            if (response.ok) {
-                window.location.href = "protected.html";
-            } else {
-                // 5. Make the error message display in a red fashioned label. Use bootstraps classes 
-                document.getElementById("login-message").className = "alert alert-danger";
-                document.getElementById("login-message").innerHTML = "Login failed. Please check your credentials";
-            }
-            console.log(data);
-        } catch (error) {
-            console.error("Error:", error);
-        }
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data.user);
+        // Adjust to what will be vissible when user is logged in and admin
+
+        // hides authcontent and shows logged-in / account content i modal
+        document.getElementById('auth-content').classList.add('d-none');
+        document.getElementById('account-content').classList.remove('d-none');
+        // The message that shows up in modal
+        const loginMessage = document.getElementById('login-message');
+        loginMessage.innerHTML = '';
+        loginMessage.className = '';
+        //this message shows up in header as "Welcome ${username}"
+        const welcomeMessage = document.getElementById('welcome-message');
+        welcomeMessage.querySelector('p').innerText = `Welcome ${data.user.username}`;
+        welcomeMessage.classList.remove('d-none');
+
+        //hides the modal on login
+        const modalElement = document.getElementById('loginModal');
+        const modal = bootstrap.Modal.getInstance(modalElement);
+        modal.hide();
+        // document.getElementById('user-content').classList.remove('d-none')
+        // if (data.user.is_admin) {
+        // document.getElementById('admin-content').classList.remove('d-none')
+      } else {
+        // 5. Make the error message display in a red fashioned label. Use bootstraps classes
+        document.getElementById('login-message').className = 'alert alert-danger';
+        document.getElementById('login-message').innerHTML = 'Login failed. Please check your credentials';
+      }
+      console.log(data);
+    } catch (error) {
+      console.error('Error:', error);
     }
-    login();
-});
+  });
+}
+login();
