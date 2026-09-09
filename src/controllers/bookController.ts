@@ -1,9 +1,12 @@
+// Importerar Request och Response från Express
+import { Request, Response } from "express";
+
 // Importerar Book-modellen
 import Book from "../models/Book";
 
 // GET /api/books
 // Hämtar alla böcker
-export const getBooks = async (req, res) => {
+export const getBooks = async (req: Request, res: Response) => {
   try {
     const books = await Book.find();
     res.json(books);
@@ -15,7 +18,7 @@ export const getBooks = async (req, res) => {
 
 // GET /api/books/:id
 // Hämtar en specifik bok
-export const getBook = async (req, res) => {
+export const getBook = async (req: Request, res: Response) => {
   try {
     const book = await Book.findById(req.params.id);
 
@@ -32,7 +35,7 @@ export const getBook = async (req, res) => {
 
 // POST /api/books
 // Skapar en ny bok
-export const createBook = async (req, res) => {
+export const createBook = async (req: Request, res: Response) => {
   try {
     const book = await Book.create(req.body);
 
@@ -45,7 +48,7 @@ export const createBook = async (req, res) => {
 
 // PATCH /api/books/:id
 // Uppdaterar en befintlig bok
-export const updateBook = async (req, res) => {
+export const updateBook = async (req: Request, res: Response) => {
   try {
     const book = await Book.findByIdAndUpdate(
       req.params.id,
@@ -66,7 +69,7 @@ export const updateBook = async (req, res) => {
 
 // DELETE /api/books/:id
 // Raderar en bok
-export const deleteBook = async (req, res) => {
+export const deleteBook = async (req: Request, res: Response) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
 
