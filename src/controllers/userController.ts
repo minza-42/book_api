@@ -4,7 +4,7 @@ import User from '../models/User';
 import { formatUser } from '../utils/formatUser';
 
 //GET ALL
-export const fetchAllUsers = async (req: Request, res: Response) => {
+export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.find();
 
@@ -25,7 +25,7 @@ export const fetchAllUsers = async (req: Request, res: Response) => {
 };
 
 // GET ONE
-export const fetchUser = async (req: Request, res: Response) => {
+export const getUser = async (req: Request, res: Response) => {
   const id = req.params.id as string;
   try {
     const user = await User.findById(id);
