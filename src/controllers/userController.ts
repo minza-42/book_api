@@ -94,4 +94,21 @@ export const patchUser = async (req: Request, res: Response) => {
 };
 
 //DELETE
-export const deleteUser = async (req: Request, res: Response) => {};
+export const deleteUser = async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  try {
+    const result = await User.deleteOne({ _id: id });
+    if (result.deletedCount === 0) {
+      res.status(404).json({
+        message: 'User not found',
+      });
+      return;
+    }
+    res.json({ message: 'User delted' });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Internal server error',
+    });
+  }
+};
