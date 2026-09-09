@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,76 +44,104 @@
       <div class="user-modal modal" id="loginModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-            <!-- LOGIN -->
-            <div class="modal-header">
-              <h2 class="modal-title">Login</h2>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            <!-- AUTH content -->
+            <div id="auth-content">
+              <!-- LOGIN -->
+              <div class="modal-header">
+                <h2 class="modal-title">Login</h2>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+              </div>
+  
+              <div class="modal-body">
+                <form id="login-form">
+                  <input id="login-username" type="text" class="form-control mb-3" placeholder="Username" />
+                  <input id="login-password" type="password" class="form-control mb-3" placeholder="Password" />
+                  <p id="login-message"></p>
+                  <button type="submit" class="btn btn-dark">Login</button>
+                </form>
+              </div>
+  
+              <!-- REGISTER -->
+              <div class="modal-header mt-4">
+                <h2 class="modal-title">Create new account</h2>
+              </div>
+              <div class="modal-body">
+                <form id="register-form">
+                  <input id="register-username" type="text" class="form-control mb-3" placeholder="Username" />
+                  <input id="register-password" type="password" class="form-control mb-3" placeholder="Password" />
+                  <p id="register-message"></p>
+                  <button type="submit" class="btn btn-dark">Register</button>
+                </form>
+              </div>
             </div>
 
-            <div class="modal-body">
-              <form id="login-form">
-                <input id="login-username" type="text" class="form-control mb-3" placeholder="Username" />
-                <input id="login-password" type="password" class="form-control mb-3" placeholder="Password" />
-                <p id="login-message"></p>
-                <button type="submit" class="btn btn-dark">Login</button>
-              </form>
-            </div>
-
-            <!-- REGISTER -->
-            <div class="modal-header mt-4">
-              <h2 class="modal-title">Create new account</h2>
-            </div>
-
-            <div class="modal-body">
-              <form id="register-form">
-                <input id="register-username" type="text" class="form-control mb-3" placeholder="Username" />
-                <input id="register-password" type="password" class="form-control mb-3" placeholder="Password" />
-                <p id="register-message"></p>
-                <button type="submit" class="btn btn-dark">Register</button>
-              </form>
+          
+            <!-- LOGGED IN ACCOUNT -->
+            <div id="account-content" class="d-none">
+              <div class="modal-header border-bottom-0 mt-4">
+                <h2 class="modal-title">My account</h2>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body pb-5">
+                <!-- link list -->
+                <ul>
+                  <li>
+                    <a href="" class="d-block mb-3 mt-4 text-decoration-none text-reset">Accout settings</a>
+                  </li>
+                  <li>
+                    <a href="" class="d-block mb-3 mt-4 text-decoration-none text-reset">View My reviews</a>
+                  </li>
+                </ul>
+                <!-- log out button -->
+                <div class="d-flex justify-content-center mt-4">
+                  <button id="logout-btn" class="btn btn-dark">Log out</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </nav>
-    <p id="login-message"></p>
-    <!-- <a href="protected.html" class="btn btn-outline-secondary ms-2">Go to protected page &rarr;</a> -->
-  </div>
-
-  <!-- BOOKS -->
-  <div class="container mt-5">
-
-    <h2>Books</h2>
-
-    <div id="books-list" class="row">
-      <!-- Books will be added here with JavaScript -->
+      <div id="welcome-message" class="d-none justify-content-center mt-5">
+      <p class="m-0"></p>
     </div>
+    <!-- <a href="protected.html" class="btn btn-outline-secondary ms-2">Go to protected page &rarr;</a> -->
+  
 
-  </div>
-
-
-  <!-- BOOK MODAL -->
-  <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-
-      <div class="modal-content">
-
-        <div class="modal-header">
-
-          <h2 class="modal-title" id="bookModalLabel">
-            Book
-          </h2>
-
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-        </div>
-
-        <div class="modal-body" id="book-details">
-          <!-- Book information will be displayed here -->
-        </div>
-
+    <!-- BOOKS -->
+    <div class="container mt-5">
+      <h2>Books</h2>
+      <div id="books-list" class="row">
+        <!-- Books will be added here with JavaScript -->
       </div>
 
+    </div>
+
+
+    <!-- BOOK MODAL -->
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+              <h2 class="modal-title" id="bookModalLabel">
+                Book
+              </h2>
+
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body" id="book-details">
+              <!-- Book information will be displayed here -->
+            </div>
+
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -127,3 +154,6 @@
 </body>
 
 </html>
+
+
+       
