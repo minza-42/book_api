@@ -1,10 +1,11 @@
 import { Types } from 'mongoose';
 import { Request, Response } from 'express';
 import Review from '../models/Review';
+import Book from '../models/Book';
 
 export const getAllReviews = async (_req: Request, res: Response) => {
   try {
-    const result = await Review.find({}, { _id: 0 }); // TODO: Add .sort() and .populate() later for sorting and book population
+    const result = await Review.find({}, {}); // TODO: Add .sort() and .populate() later for sorting and book population
     if (result.length === 0) {
       return res.status(400).json({ error: 'No reviews found' });
     }
@@ -18,7 +19,7 @@ export const getSpecificReview = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
-    const review = await Review.findOne({ _id: id }, { id: 0 }); // TODO: Add .populate() later for book population
+    const review = await Review.findOne({ _id: id }, {}); // TODO: Add .populate() later for book population
     if (!review) {
       return res.status(400).json({ error: 'Review not found' });
     }
@@ -29,22 +30,25 @@ export const getSpecificReview = async (req: Request, res: Response) => {
 };
 
 export const postReview = async (req: Request, res: Response) => {
-  const { name, content, rating } = req.body; // TODO: Check if we need to add book_id later for connection to specific book
-
-  if (!name || !content || rating === undefined) {
-    return res.status(400).json({ error: 'Name, content and rating are all required' });
+  const { name, content, rating, book_id } = req.body;
+  if (!name || !content || rating === undefined || !book_id) {
+    return res.status(400).json({ error: 'Name, content, rating and book_id are all required' });
   }
 
   try {
-    const review = await Review.create({ name, content, rating }); // TODO: Check if we need to add book_id later for connection to specific book
-    return res.status(201).json({ review });
+    const book = await Book.findById(book_id);
+    if (!book) {
+      res.status(404).json({ error: 'Book not found' });
+    }
+    const review = await Review.create({ name, content, rating, book_id });
+    return res.status(201).json({ message: 'Review added', review });
   } catch (error) {
     return res.status(500).json({ error: 'Failed to add review to database' });
   }
 };
 
 export const patchReview = async (req: Request, res: Response) => {
-  const allowedFields = ['name', 'content', 'rating'];
+  const allowedFields = ['name', 'content', 'rating', 'book_id'];
   const id = req.params.id;
 
   let updatedFields: { [key: string]: any } = {};
