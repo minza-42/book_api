@@ -1,5 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,7 +52,7 @@
                 <h2 class="modal-title">Login</h2>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
               </div>
-  
+
               <div class="modal-body">
                 <form id="login-form">
                   <input id="login-username" type="text" class="form-control mb-3" placeholder="Username" />
@@ -60,7 +61,7 @@
                   <button type="submit" class="btn btn-dark">Login</button>
                 </form>
               </div>
-  
+
               <!-- REGISTER -->
               <div class="modal-header mt-4">
                 <h2 class="modal-title">Create new account</h2>
@@ -75,7 +76,7 @@
               </div>
             </div>
 
-          
+
             <!-- LOGGED IN ACCOUNT -->
             <div id="account-content" class="d-none">
               <div class="modal-header border-bottom-0 mt-4">
@@ -102,11 +103,11 @@
         </div>
       </div>
     </nav>
-      <div id="welcome-message" class="d-none justify-content-center mt-5">
+    <div id="welcome-message" class="d-none justify-content-center mt-5">
       <p class="m-0"></p>
     </div>
     <!-- <a href="protected.html" class="btn btn-outline-secondary ms-2">Go to protected page &rarr;</a> -->
-  
+
 
     <!-- BOOKS -->
     <div class="container mt-5">
@@ -126,19 +127,80 @@
 
           <div class="modal-header">
 
-              <h2 class="modal-title" id="bookModalLabel">
-                Book
-              </h2>
+            <h2 class="modal-title" id="bookModalLabel">
+              Book
+            </h2>
 
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-            </div>
-
-            <div class="modal-body" id="book-details">
-              <!-- Book information will be displayed here -->
-            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
           </div>
+
+          <div class="modal-body" id="book-details">
+            <!-- Book information will be displayed here -->
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Edit Book Modal -->
+  <div class="modal fade" id="editBookModal" tabindex="-1" aria-labelledby="editBookModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="editBookModalLabel">Edit book</h5>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <form id="edit-book-form">
+
+            <div class="mb-3">
+              <label for="edit-title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="edit-title" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-author" class="form-label">Author</label>
+              <input type="text" class="form-control" id="edit-author" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-description" class="form-label">Description</label>
+              <textarea class="form-control" id="edit-description" rows="5" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-genres" class="form-label">
+                Genres
+              </label>
+
+              <input type="text" class="form-control" id="edit-genres" placeholder="Fantasy, Romance, Adventure"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-year" class="form-label">
+                Published year
+              </label>
+
+              <input type="number" class="form-control" id="edit-year" required>
+            </div>
+
+            <p id="edit-book-message"></p>
+
+            <button type="submit" class="btn btn-primary">
+              Save changes
+            </button>
+
+          </form>
 
         </div>
       </div>
@@ -155,6 +217,3 @@
 </body>
 
 </html>
-
-
-       

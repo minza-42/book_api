@@ -1,12 +1,10 @@
 const bookDetails = document.getElementById('book-details');
 
-// Get the book ID from the URL
 const params = new URLSearchParams(window.location.search);
 const bookId = params.get('id');
 
 async function getBook() {
   try {
-    // Get the specific book
     const response = await fetch(`/api/books/${bookId}`);
 
     if (!response.ok) {
@@ -17,7 +15,6 @@ async function getBook() {
 
     console.log('Book:', book);
 
-    // Display the book
     bookDetails.innerHTML = `
       <div class="row">
 
@@ -30,7 +27,6 @@ async function getBook() {
           >
 
         </div>
-
 
         <div class="col-md-7">
 
@@ -60,6 +56,23 @@ async function getBook() {
 
       </div>
     `;
+
+    // Hitta Edit-knappen
+    const editButton = document.getElementById('edit-book-btn');
+
+    editButton.addEventListener('click', () => {
+      // Fyll formuläret med bokens information
+      document.getElementById('edit-title').value = book.title;
+      document.getElementById('edit-author').value = book.author;
+      document.getElementById('edit-description').value = book.description;
+      document.getElementById('edit-genres').value = book.genres.join(', ');
+      document.getElementById('edit-year').value = book.published_year;
+
+      // Öppna Edit-fönstret
+      const modal = new bootstrap.Modal(document.getElementById('editBookModal'));
+
+      modal.show();
+    });
   } catch (error) {
     console.error('Could not fetch book:', error);
 
@@ -68,5 +81,55 @@ async function getBook() {
     `;
   }
 }
+
+// Edit-formuläret
+const editForm = document.getElementById('edit-book-form');
+
+editForm.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const updatedBook = {
+    title: document.getElementById('edit-title').value,
+    author: document.getElementById('edit-author').value,
+    description: document.getElementById('edit-description').value,
+
+    genres: document
+      .getElementById('edit-genres')
+      .value.split(',')
+      .map(genre => genre.trim()),
+
+    published_year: Number(document.getElementById('edit-year').value),
+  };
+
+  try {
+    const response = await fetch(`/api/books/${bookId}`, {
+      method: 'PATCH',
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+      credentials: 'include',
+
+      body: JSON.stringify(updatedBook),
+    });
+
+    if (!response.ok) {
+      throw new Error('Could not update book');
+    }
+
+    // Stäng Edit-fönstret
+    const modal = bootstrap.Modal.getInstance(document.getElementById('editBookModal'));
+
+    modal.hide();
+
+    // Hämta boken igen så den uppdaterade informationen visas
+    getBook();
+  } catch (error) {
+    console.error('Could not update book:', error);
+
+    document.getElementById('edit-book-message').textContent = 'Could not update book.';
+  }
+});
 
 getBook();
