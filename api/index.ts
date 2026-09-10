@@ -81,7 +81,7 @@ import bookRouter from '../src/routes/bookRoutes';
 app.use('/api/auth', authRouter);
 app.use('/api/greetings', greetingRouter);
 app.use('/api/users', userRouter);
-app.use('/api/review', reviewRouter);
+app.use('/api/reviews', reviewRouter);
 app.use('/api/books', bookRouter);
 
 // Connect To DB
