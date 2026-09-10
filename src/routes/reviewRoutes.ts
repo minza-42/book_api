@@ -15,7 +15,7 @@ import { verifyToken } from '../middleware/verifyToken';
 router.get('/', getAllReviews);
 router.get('/:id', getSpecificReview);
 router.post('/', postReview);
-router.patch('/:id', verifyToken, verifyAdmin, patchReview);
-router.delete('/:id', verifyToken, verifyAdmin, deleteReview);
+router.patch('/:id', patchReview);
+router.delete('/:id', deleteReview);
 
 export default router;
