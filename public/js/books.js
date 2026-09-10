@@ -1,7 +1,4 @@
 const booksList = document.getElementById('books-list');
-const bookDetails = document.getElementById('book-details');
-
-const modal = new bootstrap.Modal(document.getElementById('bookModal'));
 
 async function getBooks() {
   try {
@@ -51,47 +48,7 @@ async function getBooks() {
       const viewButton = bookCard.querySelector('.view-book-btn');
 
       viewButton.addEventListener('click', () => {
-        bookDetails.innerHTML = `
-          <div class="row">
-
-            <div class="col-md-5">
-              <img
-                src="${book.image}"
-                class="img-fluid rounded"
-                alt="${book.title}"
-              >
-            </div>
-
-            <div class="col-md-7">
-
-              <h2>${book.title}</h2>
-
-              <p>
-                <strong>Author:</strong> ${book.author}
-              </p>
-
-              <p>
-                <strong>Year:</strong> ${book.published_year}
-              </p>
-
-              <p>
-                <strong>Genres:</strong> ${book.genres.join(', ')}
-              </p>
-
-              <hr>
-
-              <h3>Description</h3>
-
-              <p>
-                ${book.description}
-              </p>
-
-            </div>
-
-          </div>
-        `;
-
-        modal.show();
+        window.location.href = `book.html?id=${book._id}`;
       });
 
       booksList.appendChild(bookCard);
