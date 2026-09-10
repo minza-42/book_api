@@ -9,10 +9,13 @@ import {
 
 const router = express.Router();
 
-router.get('/api/reviews/', getAllReviews);
-router.get('/api/reviews/:id', getSpecificReview);
-router.post('/api/reviews/', postReview);
-router.patch('/api/reviews/:id', patchReview);
-router.delete('/api/reviews/:id', deleteReview);
+import { verifyAdmin } from '../middleware/verifyAdmin';
+import { verifyToken } from '../middleware/verifyToken';
+
+router.get('/', getAllReviews);
+router.get('/:id', getSpecificReview);
+router.post('/', postReview);
+router.patch('/:id', verifyToken, verifyAdmin, patchReview);
+router.delete('/:id', verifyToken, verifyAdmin, deleteReview);
 
 export default router;
