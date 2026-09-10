@@ -22,10 +22,13 @@ async function login() {
 
       const data = await response.json();
 
+      // login success-flow
       if (response.ok) {
         console.log(data.user);
         // Adjust to what will be vissible when user is logged in and admin
 
+        // clear loginform on login
+        document.getElementById('login-form').reset();
         // hides authcontent and shows logged-in / account content i modal
         document.getElementById('auth-content').classList.add('d-none');
         document.getElementById('account-content').classList.remove('d-none');
@@ -42,6 +45,8 @@ async function login() {
         const modalElement = document.getElementById('loginModal');
         const modal = bootstrap.Modal.getInstance(modalElement);
         modal.hide();
+
+        // FOR LATER WHEN ADMIN PANEL IS MADE
         // document.getElementById('user-content').classList.remove('d-none')
         // if (data.user.is_admin) {
         // document.getElementById('admin-content').classList.remove('d-none')
