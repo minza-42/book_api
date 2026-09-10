@@ -25,7 +25,7 @@ async function login() {
       // login success-flow
       if (response.ok) {
         console.log(data.user);
-        // Adjust to what will be vissible when user is logged in and admin
+        // Adjust to what will be visible when user is logged in and admin
 
         // clear loginform on login
         document.getElementById('login-form').reset();
