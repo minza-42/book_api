@@ -13,14 +13,12 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
   }
 
   jwt.verify(req.cookies.accessToken, process.env.JWT_SECRET || '', (error: jwt.VerifyErrors | null, decoded: any) => {
-    console.log('DECODED TOKEN:', decoded);
     if (error) {
       res.status(403).send();
       return;
     }
 
     req.user = decoded;
-    console.log('REQ USER AFTER SET:', req.user);
     next();
   });
 };

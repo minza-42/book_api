@@ -16,6 +16,22 @@ body {
   background-attachment: fixed;
 }
 
+.link-hover:hover {
+  font-weight: bold;
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-color: #f5eeee;
+}
+tbody,
+td,
+tfoot,
+th,
+tr {
+  border-style: none;
+}
+
 .message {
   margin-top: 16px;
   padding: 12px;
@@ -25,9 +41,4 @@ body {
 .message.error {
   background: #f8d7da;
   color: #842029;
-}
-
-.message.success {
-  background: #d1e7dd;
-  color: #0f5132;
 }
