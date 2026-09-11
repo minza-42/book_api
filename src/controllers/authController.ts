@@ -11,12 +11,14 @@ export const register = async (req: Request, res: Response) => {
   }
   if (username.trim().length < 3) {
     res.status(400).json({
+      field: 'username',
       message: 'Username must be at least 3 characters',
     });
     return;
   }
   if (password.trim().length < 6) {
     res.status(400).json({
+      field: 'password',
       message: 'Password must be at least 6 characters',
     });
     return;
@@ -26,6 +28,7 @@ export const register = async (req: Request, res: Response) => {
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       res.status(409).json({
+        field: 'username',
         message: 'Username already exists',
       });
       return;
