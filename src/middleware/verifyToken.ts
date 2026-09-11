@@ -21,6 +21,6 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
 
     req.user = decoded;
     console.log('REQ USER AFTER SET:', req.user);
-    next(); // makes the request move on to the next step in the process, in this case move on to greetingSpecific
+    next();
   });
 };
