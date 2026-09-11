@@ -13,6 +13,8 @@ async function getBook() {
 
     const book = await response.json();
 
+    document.title = `Bookmark - ${book.title}`;
+
     console.log('Book:', book);
 
     bookDetails.innerHTML = `

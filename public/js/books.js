@@ -37,11 +37,11 @@ async function getBooks() {
               <strong>Genres:</strong> ${book.genres.join(', ')}
             </p>
 
-            <button class="btn btn-primary view-book-btn">
+            <button class="btn btn-dark view-book-btn px-3">
               View book
             </button>
 
-            <button class="btn btn-secondary edit-book-btn">
+            <button class="btn btn-outline-dark edit-book-btn">
               Edit
             </button>
 
