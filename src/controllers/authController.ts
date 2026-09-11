@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import User from '../models/User';
+import { AuthRequest } from '../middleware/verifyToken';
 
 export const register = async (req: Request, res: Response) => {
   const { username, password } = req.body;
@@ -119,6 +120,12 @@ export const login = async (req: Request, res: Response) => {
       message: 'Internal server error',
     });
   }
+};
+
+export const getMe = (req: AuthRequest, res: Response) => {
+  res.json({
+    user: req.user,
+  });
 };
 
 export const logout = async (req: Request, res: Response) => {
