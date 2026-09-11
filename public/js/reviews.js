@@ -38,7 +38,7 @@ reviewForm.addEventListener('submit', event => {
 async function addReviewToList(review) {
   const reviewCard = document.createElement('article');
 
-  reviewCard.classList.add('col-md-4', 'mb-4');
+  reviewCard.classList.add('col-lg-4', 'col-md-6', 'col-12', 'mb-4');
 
   reviewCard.innerHTML = `
     <div class="card h-100 shadow-sm">

@@ -10,7 +10,7 @@ async function getBooks() {
     books.forEach(book => {
       const bookCard = document.createElement('div');
 
-      bookCard.classList.add('col-md-4', 'mb-4');
+      bookCard.classList.add('col-lg-4', 'col-md-6', 'col-12', 'mb-4');
 
       bookCard.innerHTML = `
         <div class="card h-100">
@@ -25,24 +25,20 @@ async function getBooks() {
 
             <h2 class="card-title">${book.title}</h2>
 
-            <p class="card-text">
+            <p class="card-text author">
               <strong>Author:</strong> ${book.author}
             </p>
 
-            <p class="card-text">
+            <p class="card-text year">
               <strong>Year:</strong> ${book.published_year}
             </p>
 
-            <p class="card-text">
+            <p class="card-text genres">
               <strong>Genres:</strong> ${book.genres.join(', ')}
             </p>
 
             <button class="btn btn-dark view-book-btn px-3">
               View book
-            </button>
-
-            <button class="btn btn-outline-dark edit-book-btn">
-              Edit
             </button>
 
           </div>
@@ -56,26 +52,6 @@ async function getBooks() {
         window.location.href = `book.html?id=${book._id}`;
       });
 
-      // Redigera bok
-      const editButton = bookCard.querySelector('.edit-book-btn');
-
-      editButton.addEventListener('click', () => {
-        // Fyll i formuläret med bokens nuvarande information
-        document.getElementById('edit-title').value = book.title;
-        document.getElementById('edit-author').value = book.author;
-        document.getElementById('edit-description').value = book.description;
-        document.getElementById('edit-genres').value = book.genres.join(', ');
-        document.getElementById('edit-year').value = book.published_year;
-
-        // Spara bokens ID
-        document.getElementById('edit-book-form').dataset.bookId = book._id;
-
-        // Öppna redigeringsfönstret
-        const modal = new bootstrap.Modal(document.getElementById('editBookModal'));
-
-        modal.show();
-      });
-
       booksList.appendChild(bookCard);
     });
   } catch (error) {
@@ -86,58 +62,6 @@ async function getBooks() {
     `;
   }
 }
-
-// REDIGERINGSFORMULÄR
-const editForm = document.getElementById('edit-book-form');
-
-editForm.addEventListener('submit', async event => {
-  event.preventDefault();
-
-  const bookId = editForm.dataset.bookId;
-
-  const updatedBook = {
-    title: document.getElementById('edit-title').value,
-    author: document.getElementById('edit-author').value,
-    description: document.getElementById('edit-description').value,
-
-    genres: document
-      .getElementById('edit-genres')
-      .value.split(',')
-      .map(genre => genre.trim()),
-
-    published_year: Number(document.getElementById('edit-year').value),
-  };
-
-  try {
-    const response = await fetch(`/api/books/${bookId}`, {
-      method: 'PATCH',
-
-      headers: {
-        'Content-Type': 'application/json',
-      },
-
-      credentials: 'include',
-
-      body: JSON.stringify(updatedBook),
-    });
-
-    if (!response.ok) {
-      throw new Error('Could not update book');
-    }
-
-    // Stäng redigeringsfönstret
-    const modal = bootstrap.Modal.getInstance(document.getElementById('editBookModal'));
-
-    modal.hide();
-
-    // Ladda om böckerna
-    getBooks();
-  } catch (error) {
-    console.error('Could not update book:', error);
-
-    document.getElementById('edit-book-message').textContent = 'Could not update book.';
-  }
-});
 
 // Ladda böcker när sidan öppnas
 getBooks();

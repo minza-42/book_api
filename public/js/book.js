@@ -18,46 +18,50 @@ async function getBook() {
     console.log('Book:', book);
 
     bookDetails.innerHTML = `
-      <div class="row">
+  <div class="row book-details-card">
+  
+  <div class="book-image-container">
 
-        <div class="col-md-5">
+      <img
+        src="${book.image}"
+        class="img-fluid rounded book-detail-image"
+        alt="${book.title}"
+      >
 
-          <img
-            src="${book.image}"
-            class="img-fluid rounded"
-            alt="${book.title}"
-          >
+    </div>
 
-        </div>
+    <div class="book-info">
 
-        <div class="col-md-7">
+      <h1 class="book-detail-title">${book.title}</h1>
 
-          <h1>${book.title}</h1>
+      <div class="book-meta">
 
-          <p>
-            <strong>Author:</strong> ${book.author}
-          </p>
+        <p>
+          <strong>Author:</strong> ${book.author}
+        </p>
 
-          <p>
-            <strong>Year:</strong> ${book.published_year}
-          </p>
+        <p>
+          <strong>Year:</strong> ${book.published_year}
+        </p>
 
-          <p>
-            <strong>Genres:</strong> ${book.genres.join(', ')}
-          </p>
-
-          <hr>
-
-          <h2>Description</h2>
-
-          <p>
-            ${book.description}
-          </p>
-
-        </div>
+        <p>
+          <strong>Genres:</strong> ${book.genres.join(', ')}
+        </p>
 
       </div>
-    `;
+
+      <hr>
+
+      <h2>Description</h2>
+
+      <p class="book-description">
+        ${book.description}
+      </p>
+
+    </div>
+
+  </div>
+`;
 
     // Hitta Edit-knappen
     const editButton = document.getElementById('edit-book-btn');
@@ -74,6 +78,33 @@ async function getBook() {
       const modal = new bootstrap.Modal(document.getElementById('editBookModal'));
 
       modal.show();
+    });
+
+    // Hitta Delete-knappen
+    const deleteButton = document.getElementById('delete-book-btn');
+
+    deleteButton.addEventListener('click', async () => {
+      const confirmDelete = confirm('Are you sure you want to delete this book?');
+
+      if (!confirmDelete) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/books/${bookId}`, {
+          method: 'DELETE',
+          credentials: 'include',
+        });
+
+        if (!response.ok) {
+          throw new Error('Could not delete book');
+        }
+
+        // Skicka tillbaka användaren till index
+        window.location.href = 'index.html';
+      } catch (error) {
+        console.error('Could not delete book:', error);
+      }
     });
   } catch (error) {
     console.error('Could not fetch book:', error);
