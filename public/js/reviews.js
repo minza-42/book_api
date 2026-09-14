@@ -6,6 +6,10 @@ console.log('Book ID: ', reviewBookId);
 
 const reviewForm = document.getElementById('review-form');
 
+// --------------------------------------------------------
+// ----------------------- POST REVIEW --------------------
+// --------------------------------------------------------
+
 async function postReview() {
   const name = document.getElementById('review-name').value;
   const content = document.getElementById('review-content').value;
@@ -35,6 +39,10 @@ reviewForm.addEventListener('submit', event => {
   postReview();
 });
 
+// --------------------------------------------------------
+// ----------------- ADD REVIEW TO LIST -------------------
+// --------------------------------------------------------
+
 async function addReviewToList(review) {
   const reviewCard = document.createElement('article');
 
@@ -56,8 +64,12 @@ async function addReviewToList(review) {
   reviewsList.appendChild(reviewCard);
 }
 
+// --------------------------------------------------------
+// ---------------------- SHOW REVIEWS --------------------
+// --------------------------------------------------------
+
 async function showReviews() {
-  const response = await fetch(`/api/reviews/book/${reviewBookId}`);
+  const response = await fetch(`/api/books/${reviewBookId}`);
 
   if (!response.ok) {
     throw new Error('Could not find reviews');
@@ -65,7 +77,7 @@ async function showReviews() {
 
   const data = await response.json();
 
-  const reviews = data.reviews;
+  const reviews = data.reviews || [];
 
   reviewsList.innerHTML = '';
 

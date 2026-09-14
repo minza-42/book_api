@@ -1,8 +1,8 @@
 // Importerar Request och Response från Express
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
 // Importerar Book-modellen
-import Book from "../models/Book";
+import Book from '../models/Book';
 
 // GET /api/books
 // Hämtar alla böcker
@@ -12,7 +12,7 @@ export const getBooks = async (req: Request, res: Response) => {
     res.json(books);
   } catch (error) {
     // Om något går fel skickas ett serverfel
-    res.status(500).json({ message: "Could not fetch books" });
+    res.status(500).json({ message: 'Could not fetch books' });
   }
 };
 
@@ -20,16 +20,16 @@ export const getBooks = async (req: Request, res: Response) => {
 // Hämtar en specifik bok
 export const getBook = async (req: Request, res: Response) => {
   try {
-    const book = await Book.findById(req.params.id);
+    const book = await Book.findById(req.params.id).populate('reviews');
 
     if (!book) {
-      return res.status(404).json({ message: "Book not found" });
+      return res.status(404).json({ message: 'Book not found' });
     }
 
     res.json(book);
   } catch (error) {
     // Om något går fel skickas ett serverfel
-    res.status(500).json({ message: "Could not fetch book" });
+    res.status(500).json({ message: 'Could not fetch book' });
   }
 };
 
@@ -42,7 +42,7 @@ export const createBook = async (req: Request, res: Response) => {
     res.status(201).json(book);
   } catch (error) {
     // Om något går fel skickas ett serverfel
-    res.status(500).json({ message: "Could not create book" });
+    res.status(500).json({ message: 'Could not create book' });
   }
 };
 
@@ -50,20 +50,16 @@ export const createBook = async (req: Request, res: Response) => {
 // Uppdaterar en befintlig bok
 export const updateBook = async (req: Request, res: Response) => {
   try {
-    const book = await Book.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const book = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
     if (!book) {
-      return res.status(404).json({ message: "Book not found" });
+      return res.status(404).json({ message: 'Book not found' });
     }
 
     res.json(book);
   } catch (error) {
     // Om något går fel skickas ett serverfel
-    res.status(500).json({ message: "Could not update book" });
+    res.status(500).json({ message: 'Could not update book' });
   }
 };
 
@@ -74,12 +70,12 @@ export const deleteBook = async (req: Request, res: Response) => {
     const book = await Book.findByIdAndDelete(req.params.id);
 
     if (!book) {
-      return res.status(404).json({ message: "Book not found" });
+      return res.status(404).json({ message: 'Book not found' });
     }
 
-    res.json({ message: "Book deleted successfully" });
+    res.json({ message: 'Book deleted successfully' });
   } catch (error) {
     // Om något går fel skickas ett serverfel
-    res.status(500).json({ message: "Could not delete book" });
+    res.status(500).json({ message: 'Could not delete book' });
   }
 };
