@@ -5,6 +5,11 @@ editModal.addEventListener('hide.bs.modal', () => {
   document.activeElement.blur();
 });
 
+const addModal = document.getElementById('add-book-modal');
+addModal.addEventListener('hide.bs.modal', () => {
+  document.activeElement.blur();
+});
+
 async function getBooks() {
   const response = await fetch(API_URL + '/books');
 
@@ -30,7 +35,7 @@ function renderBooks(books) {
                 <button class="btn btn-outline-info edit-book-btn" data-id="${book._id}">
                     Edit
                 </button>
-                <button class="btn btn-outline-warning delete-book-btn" data-id="${book._id}">
+                <button class="btn btn-dark delete-book-btn" data-id="${book._id}">
                     Delete
                 </button>
             </td>
@@ -149,5 +154,48 @@ editForm.addEventListener('submit', async event => {
 });
 
 // POST by creating a add new book- form-modal
+const addForm = document.querySelector('#add-book-form');
+addForm.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const newBook = {
+    title: document.getElementById('add-title').value,
+    author: document.getElementById('add-author').value,
+    description: document.getElementById('add-description').value,
+    genres: document
+      .getElementById('add-genres')
+      .value.split(',')
+      .map(genre => genre.trim()),
+    published_year: Number(document.getElementById('add-year').value),
+    image: document.getElementById('add-image').value,
+  };
+  try {
+    const response = await fetch(API_URL + '/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(newBook),
+    });
+    console.log('POST status:', response.status);
+
+    const data = await response.json();
+
+    console.log('POST response:', data);
+    if (!response.ok) {
+      throw new Error('Unable to create new book');
+    }
+    console.log('Book created');
+    addForm.reset();
+
+    const modal = bootstrap.Modal.getInstance(document.getElementById('add-book-modal'));
+
+    modal.hide();
+    checkAdmin();
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 checkAdmin();
