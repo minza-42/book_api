@@ -29,19 +29,19 @@ export const getSpecificReview = async (req: Request, res: Response) => {
   }
 };
 
-export const getReviewsToSpecificBook = async (req: Request, res: Response) => {
-  const bookId = req.params.id;
+// export const getReviewsToSpecificBook = async (req: Request, res: Response) => {
+//   const bookId = req.params.id;
 
-  try {
-    const reviews = await Review.find({ book_id: bookId }, {});
-    if (reviews.length === 0) {
-      return res.status(200).json({ message: 'No reviews found for this book' });
-    }
-    return res.status(200).json({ reviews });
-  } catch (error) {
-    return res.status(500).json({ error: 'Failed to fetch review from to database' });
-  }
-};
+//   try {
+//     const reviews = await Review.find({ book_id: bookId }, {});
+//     if (reviews.length === 0) {
+//       return res.status(200).json({ message: 'No reviews found for this book' });
+//     }
+//     return res.status(200).json({ reviews });
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Failed to fetch review from to database' });
+//   }
+// };
 
 export const postReview = async (req: Request, res: Response) => {
   const { name, content, rating, book_id } = req.body;

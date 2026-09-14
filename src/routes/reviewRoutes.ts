@@ -5,7 +5,7 @@ import {
   postReview,
   patchReview,
   deleteReview,
-  getReviewsToSpecificBook,
+  // getReviewsToSpecificBook,
 } from '../controllers/reviewController';
 
 const router = express.Router();
@@ -15,7 +15,7 @@ import { verifyToken } from '../middleware/verifyToken';
 
 router.get('/', getAllReviews);
 router.get('/:id', getSpecificReview);
-router.get('/book/:id', getReviewsToSpecificBook);
+// router.get('/book/:id', getReviewsToSpecificBook);
 router.post('/', postReview);
 router.patch('/:id', patchReview);
 router.delete('/:id', deleteReview);
