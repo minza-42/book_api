@@ -48,19 +48,25 @@ async function addReviewToList(review) {
 
   reviewCard.classList.add('col-lg-4', 'col-md-6', 'col-12', 'mb-4');
 
+  const createdDate = new Date(review.created_at).toLocaleDateString('sv-SE');
+
   reviewCard.innerHTML = `
     <div class="card h-100 shadow-sm">
-        <div class="card-body">
-            <h5 class="card-title">${review.name}</h5>
+      <div class="card-body">
+        <h5 class="card-title">${review.name}</h5>
 
-            <p class="card-text">${review.content}</p>
+        <p class="card-text">${review.content}</p>
 
-            <div class="text-warning mb-2">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="text-warning">
             ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-            </div>
+          </div>
+
+          <small class="text-muted">${createdDate}</small>
         </div>
+      </div>
     </div>
-    `;
+  `;
   reviewsList.appendChild(reviewCard);
 }
 
