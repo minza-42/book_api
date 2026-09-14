@@ -134,8 +134,13 @@
             />
           </svg>
         </a>
+        <!-- Page heading -->
+        <div class="d-flex justify-content-between align-items-center my-5">
+          <h1 class="m-0">Admin - Bookmark library</h1>
+
+          <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#add-book-modal">Add new book</button>
+        </div>
         <!-- Library Table -->
-        <h1 class="my-5">Admin - Bookmark library</h1>
         <div class="table-box mb-5">
           <div class="table-responsive">
             <table class="table align-middle">
@@ -146,6 +151,43 @@
               </thead>
               <tbody id="library-table-body"></tbody>
             </table>
+          </div>
+        </div>
+
+        <!-- ADD BOOK MODAL -->
+        <div class="modal fade" id="add-book-modal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title">Add new book</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                <form id="add-book-form">
+                  <input id="add-title" type="text" class="form-control mb-3" placeholder="Title" required />
+                  <input id="add-author" type="text" class="form-control mb-3" placeholder="Author" required />
+                  <textarea
+                    id="add-description"
+                    class="form-control mb-3"
+                    placeholder="Description"
+                    required
+                  ></textarea>
+                  <input
+                    id="add-genres"
+                    type="text"
+                    class="form-control mb-3"
+                    placeholder="Genres, separated by commas"
+                    required
+                  />
+                  <input id="add-year" type="number" class="form-control mb-3" placeholder="Published year" required />
+                  <input id="add-image" type="text" class="form-control mb-3" placeholder="Image URL" required />
+                  <p id="add-book-message"></p>
+
+                  <button type="submit" class="btn btn-dark">Add book</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 
