@@ -1,6 +1,5 @@
 function showLoggedInUser(user) {
   document.getElementById('auth-content').classList.add('d-none');
-
   document.getElementById('account-content').classList.remove('d-none');
 
   document.querySelectorAll('.admin-menu-item').forEach(item => {
@@ -10,7 +9,6 @@ function showLoggedInUser(user) {
   const welcomeMessage = document.getElementById('welcome-message');
 
   welcomeMessage.querySelector('p').innerText = `Welcome ${user.username}`;
-
   welcomeMessage.classList.remove('d-none');
 }
 
