@@ -1,7 +1,6 @@
 let selectedBookId = null;
 
 const editModal = document.getElementById('edit-book-modal');
-
 editModal.addEventListener('hide.bs.modal', () => {
   document.activeElement.blur();
 });
