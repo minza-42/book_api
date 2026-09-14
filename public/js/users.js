@@ -16,13 +16,13 @@ async function getUsers() {
     tableBody.innerHTML = users
       .map(user => {
         return `
-          <tr>
+          <tr class="fs-5">
             <td class="p-0">${user.username}</td>
             <td class="p-0 ">${user.is_admin ? 'Yes' : 'No'}</td>
             <td class="p-0 ">${new Date(user.created_at).toLocaleDateString()}</td>
-            <td class="">
+            <td class="text-end">
               <button
-                class="btn btn-sm btn-danger delete-user-btn"
+                class="btn btn-danger delete-user-btn"
                 data-id="${user.id}"
               >
                 Delete

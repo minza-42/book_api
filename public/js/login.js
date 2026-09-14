@@ -7,9 +7,10 @@ function showLoggedInUser(user) {
   });
 
   const welcomeMessage = document.getElementById('welcome-message');
-
-  welcomeMessage.querySelector('p').innerText = `Welcome ${user.username}`;
-  welcomeMessage.classList.remove('d-none');
+  if (welcomeMessage) {
+    welcomeMessage.querySelector('p').innerText = `Welcome ${user.username}`;
+    welcomeMessage.classList.remove('d-none');
+  }
 }
 
 async function login() {
@@ -67,13 +68,11 @@ async function login() {
 // Keep me logged in on refresh
 async function checkSession() {
   try {
-    const response = await fetch(API_URL + '/auth/me', {
-      credentials: 'include',
-    });
+    // fetching a helper from functions.js
+    const user = await getCurrentUser();
 
-    if (response.ok) {
-      const data = await response.json();
-      showLoggedInUser(data.user);
+    if (user) {
+      showLoggedInUser(user);
     }
   } catch (error) {
     console.log(error);

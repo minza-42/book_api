@@ -116,33 +116,6 @@ tr {
   border-color: #2f9d6d;
   color: white;
 }
-/* Edit-knapp */
-#edit-book-btn {
-  color: #ffffff;
-  background-color: #3b82f6;
-  border-color: #3b82f6;
-  transition: 0.2s ease;
-}
-
-#edit-book-btn:hover {
-  background-color: #2563eb;
-  border-color: #2563eb;
-  color: white;
-}
-
-/* Delete-knapp */
-#delete-book-btn {
-  border: 2px solid #dc3545;
-  color: #dc3545;
-  background-color: transparent;
-  transition: 0.2s ease;
-}
-
-#delete-book-btn:hover {
-  background-color: #dc3545;
-  border-color: #dc3545;
-  color: white;
-}
 
 /*---- Book page responsive ----*/
 
