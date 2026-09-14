@@ -16,14 +16,14 @@ async function getBooks() {
         <div class="card h-100">
 
           <img
-            src="${book.image}"
-            class="card-img-top"
-            alt="${book.title}"
+          src="${book.image}"
+          class="card-img-top w-100"
+          alt="${book.title}"
           >
 
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
 
-            <h2 class="card-title">${book.title}</h2>
+            <h2 class="card-title mb-3">${book.title}</h2>
 
             <p class="card-text author">
               <strong>Author:</strong> ${book.author}
@@ -37,7 +37,7 @@ async function getBooks() {
               <strong>Genres:</strong> ${book.genres.join(', ')}
             </p>
 
-            <button class="btn btn-dark view-book-btn px-3">
+            <button class="btn btn-dark view-book-btn px-3 mt-auto align-self-start">
               View book
             </button>
 

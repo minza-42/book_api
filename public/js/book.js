@@ -20,7 +20,7 @@ async function getBook() {
     bookDetails.innerHTML = `
   <div class="row book-details-card">
   
-  <div class="book-image-container">
+  <div class="book-image-container d-flex justify-content-center">
 
       <img
         src="${book.image}"
@@ -32,7 +32,7 @@ async function getBook() {
 
     <div class="book-info">
 
-      <h1 class="book-detail-title">${book.title}</h1>
+      <h1 class="book-detail-title mb-4">${book.title}</h1>
 
       <div class="book-meta">
 
