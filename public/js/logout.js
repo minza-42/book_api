@@ -8,6 +8,11 @@ function logout() {
         credentials: 'include',
       });
       if (response.ok) {
+        const welcomeMessage = document.getElementById('welcome-message');
+
+        if (welcomeMessage) {
+          welcomeMessage.classList.add('d-none');
+        }
         document.getElementById('account-content').classList.add('d-none');
         document.getElementById('auth-content').classList.remove('d-none');
       }
