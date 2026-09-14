@@ -1,3 +1,7 @@
+/* =========================
+   General
+========================= */
+
 body {
   font-family: 'Geologica', sans-serif;
   color: #f5eeee;
@@ -43,7 +47,9 @@ tr {
   color: #842029;
 }
 
-/*---- Book page ----*/
+/* =========================
+   Book page
+========================= */
 
 .book-details-card {
   margin-top: 30px;
@@ -56,11 +62,6 @@ tr {
   gap: 35px;
 }
 
-.book-image-container {
-  display: flex;
-  justify-content: center;
-}
-
 .book-detail-image {
   width: 100%;
   max-width: 380px;
@@ -70,10 +71,6 @@ tr {
 
 .book-info {
   padding: 10px 25px;
-}
-
-.book-detail-title {
-  margin-bottom: 25px;
 }
 
 .book-meta p {
@@ -93,14 +90,11 @@ tr {
   line-height: 1.7;
 }
 
-.book-actions {
-  display: flex;
-  gap: 12px;
-}
+/* =========================
+   Reviews
+========================= */
 
-/*---- Reviews ----*/
 .review-divider {
-  margin: 40px 0;
   opacity: 0.4;
 }
 
@@ -116,8 +110,6 @@ tr {
   border-color: #2f9d6d;
   color: white;
 }
-
-/*---- Book page responsive ----*/
 
 @media (max-width: 900px) {
   .book-details-card {
@@ -155,7 +147,9 @@ tr {
   }
 }
 
-/*---- Mobile ----*/
+/* =========================
+   Mobile
+========================= */
 
 @media (max-width: 576px) {
   .book-details-card {
@@ -179,34 +173,19 @@ tr {
   }
 }
 
-/*---- Book actions ----*/
-.book-actions {
-  display: flex;
-  gap: 12px;
-}
-
-/*---- Book cards ----*/
-#books-list .card {
-  height: 100%;
-}
+/* =========================
+   Book cards
+========================= */
 
 /* Book images */
 #books-list .card-img-top {
-  width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-}
-
-/* Card content */
-#books-list .card-body {
-  display: flex;
-  flex-direction: column;
 }
 
 /* Book title */
 #books-list .card-title {
   min-height: 72px;
-  margin-bottom: 12px;
 }
 
 /* Author */
@@ -225,11 +204,6 @@ tr {
 }
 
 /* View book button */
-#books-list .view-book-btn {
-  margin-top: auto;
-  align-self: flex-start;
-}
-
 .view-book-btn {
   background-color: #243e45;
   color: #ffffff;
@@ -241,11 +215,6 @@ tr {
   background-color: #365963;
   border-color: #365963;
   color: white;
-}
-
-/*---- Footer ----*/
-.site-footer {
-  margin-top: 80px !important;
 }
 
 @media (max-width: 768px) {
