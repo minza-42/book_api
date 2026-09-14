@@ -36,6 +36,10 @@ tr {
   border-style: none;
 }
 
+.max-width-form {
+  max-width: 30rem;
+}
+
 .message {
   margin-top: 16px;
   padding: 12px;
