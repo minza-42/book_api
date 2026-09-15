@@ -13,11 +13,11 @@ async function getBooks() {
       bookCard.classList.add('col-lg-4', 'col-md-6', 'col-12', 'mb-4');
 
       bookCard.innerHTML = `
-        <div class="card h-100">
+        <div class="card text-white bg-black bg-opacity-50 shadow h-100">
 
           <img
           src="${book.image}"
-          class="card-img-top w-100"
+          class="card-img-top w-100 object-fit-cover"
           alt="${book.title}"
           >
 
@@ -37,7 +37,7 @@ async function getBooks() {
               <strong>Genres:</strong> ${book.genres.join(', ')}
             </p>
 
-            <button class="btn btn-dark view-book-btn px-3 mt-auto align-self-start">
+            <button class="btn btn-light view-book-btn px-3 mt-auto align-self-start">
               View book
             </button>
 

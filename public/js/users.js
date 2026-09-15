@@ -22,7 +22,7 @@ async function getUsers() {
             <td class="p-0 ">${new Date(user.created_at).toLocaleDateString()}</td>
             <td class="text-end">
               <button
-                class="btn btn-danger delete-user-btn"
+                class="btn btn-light delete-user-btn"
                 data-id="${user.id}"
               >
                 Delete

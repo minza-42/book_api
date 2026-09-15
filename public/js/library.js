@@ -35,7 +35,7 @@ function renderBooks(books) {
                 <button class="btn btn-outline-info edit-book-btn" data-id="${book._id}">
                     Edit
                 </button>
-                <button class="btn btn-dark delete-book-btn" data-id="${book._id}">
+                <button class="btn btn-light delete-book-btn" data-id="${book._id}">
                     Delete
                 </button>
             </td>

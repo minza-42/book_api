@@ -7,14 +7,13 @@ body {
   color: #f5eeee;
   min-height: 100vh;
   margin: 0;
-  background: linear-gradient(180deg, #080b0c 0%, #172328 35%, #304a52 70%, #527987 100%);
-
+  background: linear-gradient(180deg, #080808 0%, #181818 35%, #303030 70%, #505050 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
 .user-modal .modal-content {
-  background: linear-gradient(180deg, #080b0c 0%, #172328 35%, #304a52 70%, #527987 100%);
+  background: linear-gradient(180deg, #080808 0%, #181818 35%, #303030 70%, #505050 100%);
 
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -52,13 +51,12 @@ tr {
 }
 
 /* =========================
-   Book cards
+   Books card
 ========================= */
 
 /* Book images */
 .card-img-top {
   aspect-ratio: 2 / 3;
-  object-fit: cover;
 }
 
 /* =========================
@@ -66,10 +64,7 @@ tr {
 ========================= */
 
 .book-details-card {
-  margin-top: 30px;
-  padding: 35px;
   background: rgba(8, 11, 12, 0.35);
-  border-radius: 12px;
 
   display: grid;
   grid-template-columns: 40% 60%;
@@ -77,14 +72,8 @@ tr {
 }
 
 .book-detail-image {
-  width: 100%;
   max-width: 380px;
   aspect-ratio: 2 / 3;
-  object-fit: cover;
-}
-
-.book-info hr {
-  margin: 30px 0;
 }
 
 @media (max-width: 900px) {
@@ -123,28 +112,6 @@ tr {
    Mobile
 ========================= */
 
-@media (max-width: 576px) {
-  .book-details-card {
-    padding: 20px;
-  }
-
-  .book-detail-image {
-    max-width: 260px;
-  }
-
-  .book-detail-title {
-    font-size: 1.7rem;
-  }
-
-  .book-actions {
-    flex-direction: column;
-  }
-
-  .book-actions .btn {
-    width: 100%;
-  }
-}
-
 @media (max-width: 768px) {
   .book-details-card {
     padding: 20px;
@@ -164,5 +131,27 @@ tr {
 
   .book-detail-title {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .book-details-card {
+    padding: 20px;
+  }
+
+  .book-detail-image {
+    max-width: 260px;
+  }
+
+  .book-detail-title {
+    font-size: 1.7rem;
+  }
+
+  .book-actions {
+    flex-direction: column;
+  }
+
+  .book-actions .btn {
+    width: 100%;
   }
 }

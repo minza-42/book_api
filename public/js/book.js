@@ -18,13 +18,13 @@ async function getBook() {
     console.log('Book:', book);
 
     bookDetails.innerHTML = `
-  <div class="row book-details-card">
+  <div class="row book-details-card p-4 mt-4 rounded-3">
   
   <div class="book-image-container d-flex justify-content-center">
 
       <img
         src="${book.image}"
-        class="img-fluid rounded book-detail-image"
+        class="img-fluid rounded book-detail-image w-100 object-fit-cover"
         alt="${book.title}"
       >
 
