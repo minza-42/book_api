@@ -12,11 +12,18 @@ body {
   background-attachment: fixed;
 }
 
-.user-modal .modal-content {
+.user-modal .modal-content,
+.delete-account-modal .modal-content {
   background: linear-gradient(180deg, #080808 0%, #181818 35%, #303030 70%, #505050 100%);
 
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
 }
 
 .link-hover:hover {
@@ -76,6 +83,10 @@ tr {
   aspect-ratio: 2 / 3;
 }
 
+/* =========================
+   Media querys
+========================= */
+
 @media (max-width: 900px) {
   .book-details-card {
     display: block;
@@ -107,10 +118,6 @@ tr {
     font-size: 2rem;
   }
 }
-
-/* =========================
-   Mobile
-========================= */
 
 @media (max-width: 768px) {
   .book-details-card {
