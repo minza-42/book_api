@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import User from '../models/User';
 import { formatUser } from '../utils/formatUser';
-
+import { AuthRequest } from '../middleware/verifyToken';
 //GET ALL
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -94,17 +94,45 @@ export const patchUser = async (req: Request, res: Response) => {
 };
 
 //DELETE
-export const deleteUser = async (req: Request, res: Response) => {
+export const deleteUser = async (req: AuthRequest, res: Response) => {
   const id = req.params.id;
-
+  const { password } = req.body;
   try {
-    const result = await User.deleteOne({ _id: id });
-    if (result.deletedCount === 0) {
+    const user = await User.findById(id);
+    if (!user) {
       res.status(404).json({
         message: 'User not found',
       });
       return;
     }
+    const isOwnAccount = req.user?.userId === id;
+    const isAdmin = req.user?.is_admin === true;
+
+    //Only Admin or the account user can delete account
+    if (!isOwnAccount && !isAdmin) {
+      res.status(403).json({
+        message: 'Forbidden',
+      });
+      return;
+    }
+    // NOT admin user must confrm with password
+    if (!isAdmin) {
+      if (!password) {
+        res.status(400).json({
+          message: 'Password is required',
+        });
+        return;
+      }
+      const passwordMatches = await bcrypt.compare(password, user.password);
+
+      if (!passwordMatches) {
+        res.status(401).json({
+          message: 'Incorrect password',
+        });
+        return;
+      }
+    }
+    await User.deleteOne({ _id: id });
     res.json({ message: 'User delted' });
   } catch (error) {
     res.status(500).json({
