@@ -79,23 +79,9 @@ tr {
 /* =========================
    Media querys
 ========================= */
-
 @media (max-width: 900px) {
   .book-details-card {
     display: block;
-  }
-
-  .book-image-container {
-    margin-bottom: 30px;
-  }
-
-  .book-info {
-    padding: 0;
-  }
-}
-
-@media (max-width: 991px) {
-  .book-details-card {
     padding: 25px;
   }
 
@@ -103,30 +89,12 @@ tr {
     margin-bottom: 30px;
   }
 
-  .book-detail-image {
-    max-width: 320px;
-  }
-
-  .book-detail-title {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .book-details-card {
-    padding: 20px;
-  }
-
-  .book-image-container {
-    margin-bottom: 25px;
-  }
-
   .book-info {
     padding: 0;
   }
 
   .book-detail-image {
-    max-width: 300px;
+    max-width: 320px;
   }
 
   .book-detail-title {
@@ -139,19 +107,15 @@ tr {
     padding: 20px;
   }
 
+  .book-image-container {
+    margin-bottom: 25px;
+  }
+
   .book-detail-image {
     max-width: 260px;
   }
 
   .book-detail-title {
     font-size: 1.7rem;
-  }
-
-  .book-actions {
-    flex-direction: column;
-  }
-
-  .book-actions .btn {
-    width: 100%;
   }
 }
