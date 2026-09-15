@@ -30,6 +30,10 @@ body {
   font-weight: bold;
 }
 
+.search-input::placeholder {
+  color: white;
+}
+
 .table {
   --bs-table-bg: transparent;
   --bs-table-color: #f5eeee;
@@ -44,17 +48,6 @@ tr {
 
 .max-width-form {
   max-width: 30rem;
-}
-
-.message {
-  margin-top: 16px;
-  padding: 12px;
-  border-radius: 6px;
-}
-
-.message.error {
-  background: #f8d7da;
-  color: #842029;
 }
 
 /* =========================
