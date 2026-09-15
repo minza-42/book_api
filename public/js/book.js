@@ -30,11 +30,11 @@ async function getBook() {
 
     </div>
 
-    <div class="book-info">
+    <div class="px-4 py-2">
 
       <h1 class="book-detail-title mb-4">${book.title}</h1>
 
-      <div class="book-meta">
+      <div class="mb-3">
 
         <p>
           <strong>Author:</strong> ${book.author}
@@ -50,11 +50,11 @@ async function getBook() {
 
       </div>
 
-      <hr>
+      <hr class="opacity-50">
 
-      <h2>Description</h2>
+      <h2 class="mb-3">Description</h2>
 
-      <p class="book-description">
+      <p class="book-description lh-l">
         ${book.description}
       </p>
 
