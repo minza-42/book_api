@@ -76,6 +76,10 @@ tr {
   aspect-ratio: 2 / 3;
 }
 
+/* =========================
+   Media querys
+========================= */
+
 @media (max-width: 900px) {
   .book-details-card {
     display: block;
@@ -107,10 +111,6 @@ tr {
     font-size: 2rem;
   }
 }
-
-/* =========================
-   Mobile
-========================= */
 
 @media (max-width: 768px) {
   .book-details-card {
