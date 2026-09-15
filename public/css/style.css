@@ -30,8 +30,17 @@ body {
   font-weight: bold;
 }
 
+.search-input {
+  color: white !important;
+}
+
 .search-input::placeholder {
-  color: white;
+  color: white !important;
+  opacity: 1;
+}
+
+.search-input:focus {
+  color: white !important;
 }
 
 .table {
