@@ -5,24 +5,12 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 ## Built with
 
 ### Backend
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
-![bcrypt](https://img.shields.io/badge/bcrypt-003A70?style=for-the-badge)
-![dotenv](https://img.shields.io/badge/dotenv-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black)
-![Cookie Parser](https://img.shields.io/badge/Cookie_Parser-000000?style=for-the-badge)
-![CORS](https://img.shields.io/badge/CORS-663399?style=for-the-badge)
+
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white) ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white) ![bcrypt](https://img.shields.io/badge/bcrypt-003A70?style=for-the-badge) ![dotenv](https://img.shields.io/badge/dotenv-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black) ![Cookie Parser](https://img.shields.io/badge/Cookie_Parser-000000?style=for-the-badge) ![CORS](https://img.shields.io/badge/CORS-663399?style=for-the-badge)
 
 ### Frontend
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
 ## Features
 
@@ -55,7 +43,6 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 - Authentication uses JWT stored in an HTTP-only cookie
 - Protected routes require authentication
 - Admin routes require admin authorization
-
 
 ## API endpoints
 
@@ -180,7 +167,6 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 </tr>
 </table>
 
-
 ## Getting started
 
 ### 1. Clone the repository
@@ -212,8 +198,7 @@ Add your own MongoDB connection string and JWT secret.
 
 ### 4. MongoDB
 
-The application uses MongoDB with Mongoose.
-Connect `MONGODB_URL` to your own MongoDB database. The required collections are created automatically by Mongoose when data is added.
+The application uses MongoDB with Mongoose. Connect `MONGODB_URL` to your own MongoDB database. The required collections are created automatically by Mongoose when data is added.
 
 The application uses the following collections:
 
@@ -258,21 +243,25 @@ public/
 ### Louise Sverkström
 
 **Primary responsibility:**
+
 - Area 1: Users
 
 **Additional work:**
+
 - Book search and sorting
 - Account settings
 - Admin panel
 
-
 ### Minai Karlsson
 
 **Primary responsibility:**
-- Area 2:Books
+
+- Area 2: Books
 
 **Additional work:**
-- 
+
+- Optimized book images with WebP and lazy loading.
+- Helped with responsive styling and UI improvements.
 
 ### Erik Grahn
 
@@ -282,7 +271,7 @@ public/
 
 **Additional work:**
 
-- 
+-
 
 ## Database models
 
