@@ -42,7 +42,7 @@
           </a>
         </div>
         <!-- LOGIN BTN -->
-        <button id="login-btn" class="border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button id="login-btn" class="border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#login-modal">
           <svg width="24" height="24" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M15 0C6.72 0 0 6.72 0 15C0 23.28 6.72 30 15 30C23.28 30 30 23.28 30 15C30 6.72 23.28 0 15 0ZM15 27C12.39 27 9.99 26.16 8.025 24.75C9.99 23.34 12.39 22.5 15 22.5C17.61 22.5 20.01 23.34 21.975 24.75C20.01 26.16 17.61 27 15 27ZM24.21 22.68C21.5823 20.6193 18.3394 19.4994 15 19.4994C11.6606 19.4994 8.41774 20.6193 5.79 22.68C3.98572 20.5278 2.99784 17.8085 3 15C3 8.37 8.37 3 15 3C21.63 3 27 8.37 27 15C27 17.925 25.95 20.595 24.21 22.68Z"
@@ -55,13 +55,13 @@
           </svg>
         </button>
         <!-- MODAL -->
-        <div class="user-modal modal" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="user-modal modal" id="login-modal" tabindex="-1" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <!-- AUTH content -->
               <div id="auth-content">
                 <!-- LOGIN -->
-                <div class="modal-header">
+                <div class="modal-header border-0">
                   <h2 class="modal-title">Login</h2>
                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
@@ -71,12 +71,12 @@
                     <input id="login-username" type="text" class="form-control mb-3" placeholder="Username" />
                     <input id="login-password" type="password" class="form-control mb-3" placeholder="Password" />
                     <p id="login-message"></p>
-                    <button type="submit" class="btn btn-dark">Login</button>
+                    <button type="submit" class="btn btn-light">Login</button>
                   </form>
                 </div>
 
                 <!-- REGISTER -->
-                <div class="modal-header mt-4">
+                <div class="modal-header mt-4 border-0">
                   <h2 class="modal-title">Create new account</h2>
                 </div>
                 <div class="modal-body">
@@ -86,7 +86,7 @@
                     <input id="register-password" type="password" class="form-control mb-3" placeholder="Password" />
                     <p id="password-error" class="text-danger"></p>
                     <p id="register-message"></p>
-                    <button type="submit" class="btn btn-dark">Register</button>
+                    <button type="submit" class="btn btn-light">Register</button>
                   </form>
                 </div>
               </div>
@@ -116,7 +116,7 @@
                   </ul>
                   <!-- log out button -->
                   <div class="d-flex justify-content-center mt-4">
-                    <button id="logout-btn" class="btn btn-dark">Log out</button>
+                    <button id="logout-btn" class="btn btn-outline-light">Log out</button>
                   </div>
                 </div>
               </div>

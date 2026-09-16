@@ -50,7 +50,7 @@ async function login() {
         loginMessage.className = '';
 
         //hides the modal on login
-        const modalElement = document.getElementById('loginModal');
+        const modalElement = document.getElementById('login-modal');
         const modal = bootstrap.Modal.getInstance(modalElement);
         modal.hide();
       } else {

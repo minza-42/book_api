@@ -16,7 +16,7 @@ async function getUsers() {
     tableBody.innerHTML = users
       .map(user => {
         return `
-          <tr class="fs-5">
+          <tr class="fs-6">
             <td class="p-0">${user.username}</td>
             <td class="p-0 ">${user.is_admin ? 'Yes' : 'No'}</td>
             <td class="p-0 ">${new Date(user.created_at).toLocaleDateString()}</td>
