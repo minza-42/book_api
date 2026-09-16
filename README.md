@@ -60,114 +60,124 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 ## API endpoints
 
 <table>
-    <thead>
-        <tr>
-        <th>Resource</th>
-        <th>Method</th>
-        <th>Endpoint</th>
-        <th>Access</th>
-        </tr>
-    </thead>
+<tr>
+<th>Resource</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Access</th>
+</tr>
 
-    <tbody>
-        <tr>
-        <td rowspan="4"><strong>Auth</strong></td>
-        <td>POST</td>
-        <td><code>/api/auth/register</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>POST</td>
-        <td><code>/api/auth/login</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>POST</td>
-        <td><code>/api/auth/logout</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>GET</td>
-        <td><code>/api/auth/me</code></td>
-        <td>Authenticated</td>
-        </tr>
+<tr>
+<td><strong>Auth</strong></td>
+<td>POST</td>
+<td><code>/api/auth/register</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>POST</td>
+<td><code>/api/auth/login</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>POST</td>
+<td><code>/api/auth/logout</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>GET</td>
+<td><code>/api/auth/me</code></td>
+<td>Authenticated</td>
+</tr>
 
-        <tr>
-        <td rowspan="4"><strong>Users</strong></td>
-        <td>GET</td>
-        <td><code>/api/users</code></td>
-        <td>Admin</td>
-        </tr>
-        <tr>
-        <td>GET</td>
-        <td><code>/api/users/:id</code></td>
-        <td>Authenticated</td>
-        </tr>
-        <tr>
-        <td>PATCH</td>
-        <td><code>/api/users/:id</code></td>
-        <td>Authenticated</td>
-        </tr>
-        <tr>
-        <td>DELETE</td>
-        <td><code>/api/users/:id</code></td>
-        <td>Authenticated</td>
-        </tr>
+<tr>
+<td><strong>Users</strong></td>
+<td>GET</td>
+<td><code>/api/users</code></td>
+<td>Admin</td>
+</tr>
+<tr>
+<td></td>
+<td>GET</td>
+<td><code>/api/users/:id</code></td>
+<td>Authenticated</td>
+</tr>
+<tr>
+<td></td>
+<td>PATCH</td>
+<td><code>/api/users/:id</code></td>
+<td>Authenticated</td>
+</tr>
+<tr>
+<td></td>
+<td>DELETE</td>
+<td><code>/api/users/:id</code></td>
+<td>Authenticated</td>
+</tr>
 
-        <tr>
-        <td rowspan="5"><strong>Books</strong></td>
-        <td>GET</td>
-        <td><code>/api/books</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>GET</td>
-        <td><code>/api/books/:id</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>POST</td>
-        <td><code>/api/books</code></td>
-        <td>Admin</td>
-        </tr>
-        <tr>
-        <td>PATCH</td>
-        <td><code>/api/books/:id</code></td>
-        <td>Admin</td>
-        </tr>
-        <tr>
-        <td>DELETE</td>
-        <td><code>/api/books/:id</code></td>
-        <td>Admin</td>
-        </tr>
+<tr>
+<td><strong>Books</strong></td>
+<td>GET</td>
+<td><code>/api/books</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>GET</td>
+<td><code>/api/books/:id</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>POST</td>
+<td><code>/api/books</code></td>
+<td>Admin</td>
+</tr>
+<tr>
+<td></td>
+<td>PATCH</td>
+<td><code>/api/books/:id</code></td>
+<td>Admin</td>
+</tr>
+<tr>
+<td></td>
+<td>DELETE</td>
+<td><code>/api/books/:id</code></td>
+<td>Admin</td>
+</tr>
 
-        <tr>
-        <td rowspan="5"><strong>Reviews</strong></td>
-        <td>GET</td>
-        <td><code>/api/reviews</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>GET</td>
-        <td><code>/api/reviews/:id</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>POST</td>
-        <td><code>/api/reviews</code></td>
-        <td>Public</td>
-        </tr>
-        <tr>
-        <td>PATCH</td>
-        <td><code>/api/reviews/:id</code></td>
-        <td>Authenticated</td>
-        </tr>
-        <tr>
-        <td>DELETE</td>
-        <td><code>/api/reviews/:id</code></td>
-        <td>Authenticated</td>
-        </tr>
-    </tbody>
+<tr>
+<td><strong>Reviews</strong></td>
+<td>GET</td>
+<td><code>/api/reviews</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>GET</td>
+<td><code>/api/reviews/:id</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>POST</td>
+<td><code>/api/reviews</code></td>
+<td>Public</td>
+</tr>
+<tr>
+<td></td>
+<td>PATCH</td>
+<td><code>/api/reviews/:id</code></td>
+<td>Authenticated</td>
+</tr>
+<tr>
+<td></td>
+<td>DELETE</td>
+<td><code>/api/reviews/:id</code></td>
+<td>Authenticated</td>
+</tr>
 </table>
 
 
