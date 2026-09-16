@@ -8,7 +8,7 @@ Deltagare: Erik, Lollo & Minai
 
 ## Backlog
 
-**Måndag 11/9**
+**Måndag 14/9**
 
 - Erik: hämtade till datum i frontend på reviews
 - Minai: trixade lite CSS men är sjuk egentligen <3 
