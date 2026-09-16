@@ -7,8 +7,22 @@ import Book from '../models/Book';
 // GET /api/books
 // Hämtar alla böcker
 export const getBooks = async (req: Request, res: Response) => {
+  const search = req.query.search as string;
+  const sort = req.query.sort as string;
   try {
-    const books = await Book.find();
+    let filter: {} = {};
+
+    if (search) {
+      filter = {
+        $or: [{ title: { $regex: search, $options: 'i' } }, { author: { $regex: search, $options: 'i' } }],
+      };
+    }
+    let sortBooks: {} = {};
+    if (sort && (sort.toLowerCase() === 'asc' || sort.toLowerCase() === 'desc')) {
+      sortBooks = { title: sort.toLowerCase() };
+    }
+
+    const books = await Book.find(filter).sort(sortBooks);
     res.json(books);
   } catch (error) {
     // Om något går fel skickas ett serverfel

@@ -1,8 +1,32 @@
 const booksList = document.getElementById('books-list');
+const searchInput = document.getElementById('search-input');
+const sortBtn = document.getElementById('sort-btn');
+const ascIcon = document.getElementById('sort-asc-icon');
+const descIcon = document.getElementById('sort-desc-icon');
 
-async function getBooks() {
+let sortOrder = 'asc';
+
+searchInput.addEventListener('input', () => {
+  const searchQuery = searchInput.value;
+  getBooks(searchQuery);
+});
+
+sortBtn.addEventListener('click', () => {
+  if (sortOrder === 'asc') {
+    sortOrder = 'desc';
+    ascIcon.classList.add('d-none');
+    descIcon.classList.remove('d-none');
+  } else {
+    sortOrder = 'asc';
+    ascIcon.classList.remove('d-none');
+    descIcon.classList.add('d-none');
+  }
+  getBooks(searchInput.value);
+});
+
+async function getBooks(searchQuery = '') {
   try {
-    const response = await fetch('/api/books');
+    const response = await fetch(`/api/books?search=${searchQuery}&sort=${sortOrder}`);
     const books = await response.json();
 
     booksList.innerHTML = '';
