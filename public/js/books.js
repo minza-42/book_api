@@ -43,6 +43,7 @@ async function getBooks(searchQuery = '') {
           src="${book.image}"
           class="card-img-top w-100 object-fit-cover"
           alt="${book.title}"
+          loading="lazy"
           >
 
           <div class="card-body d-flex flex-column">
