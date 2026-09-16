@@ -45,6 +45,11 @@ async function getUsers() {
 
 //Deleteuser
 async function deleteUser(userId) {
+  const confirmed = confirm('Are you sure you want to delete this user?');
+
+  if (!confirmed) {
+    return;
+  }
   try {
     const response = await fetch(API_URL + `/users/${userId}`, {
       method: 'DELETE',
