@@ -53,6 +53,7 @@ async function login() {
         const modalElement = document.getElementById('login-modal');
         const modal = bootstrap.Modal.getInstance(modalElement);
         modal.hide();
+        window.location.reload();
       } else {
         // 5. Make the error message display in a red fashioned label. Use bootstraps classes
         document.getElementById('login-message').className = 'alert alert-danger';
