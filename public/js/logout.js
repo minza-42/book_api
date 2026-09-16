@@ -13,8 +13,7 @@ function logout() {
         if (welcomeMessage) {
           welcomeMessage.classList.add('d-none');
         }
-        document.getElementById('account-content').classList.add('d-none');
-        document.getElementById('auth-content').classList.remove('d-none');
+        window.location.href = 'index.html';
       }
     } catch (error) {
       console.log(error);
