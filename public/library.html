@@ -3,22 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Manage books in the Bookmark library. Add, edit and delete books from the admin panel."
+    />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <title>Bookmark - Library</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV@100..900,0&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="container">
@@ -42,7 +46,13 @@
           </a>
         </div>
         <!-- LOGIN BTN -->
-        <button id="login-btn" class="border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#login-modal">
+        <button
+          id="login-btn"
+          class="border-0 bg-transparent"
+          aria-label="Log in"
+          data-bs-toggle="modal"
+          data-bs-target="#login-modal"
+        >
           <svg width="24" height="24" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M15 0C6.72 0 0 6.72 0 15C0 23.28 6.72 30 15 30C23.28 30 30 23.28 30 15C30 6.72 23.28 0 15 0ZM15 27C12.39 27 9.99 26.16 8.025 24.75C9.99 23.34 12.39 22.5 15 22.5C17.61 22.5 20.01 23.34 21.975 24.75C20.01 26.16 17.61 27 15 27ZM24.21 22.68C21.5823 20.6193 18.3394 19.4994 15 19.4994C11.6606 19.4994 8.41774 20.6193 5.79 22.68C3.98572 20.5278 2.99784 17.8085 3 15C3 8.37 8.37 3 15 3C21.63 3 27 8.37 27 15C27 17.925 25.95 20.595 24.21 22.68Z"
@@ -128,7 +138,7 @@
       <!-- Library content -->
       <main class="main-content mt-5">
         <!-- BACK LINK -->
-        <a href="index.html" class="btn mb-5">
+        <a href="index.html" class="btn mb-5" aria-label="Back to start button">
           <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M15.1421 7.07121C15.2749 7.0689 15.4067 7.09306 15.5301 7.14227C15.6534 7.19148 15.7657 7.26476 15.8604 7.35783C15.9551 7.45091 16.0303 7.56191 16.0817 7.68436C16.133 7.80682 16.1595 7.93827 16.1595 8.07106C16.1595 8.20384 16.133 8.3353 16.0817 8.45775C16.0303 8.58021 15.9551 8.69121 15.8604 8.78428C15.7657 8.87736 15.6534 8.95064 15.5301 8.99985C15.4067 9.04906 15.2749 9.07321 15.1421 9.07091L3.41402 9.07091L8.77813 14.435C8.96567 14.6226 9.07102 14.8769 9.07102 15.1421C9.07102 15.4073 8.96567 15.6617 8.77813 15.8492C8.59059 16.0368 8.33624 16.1421 8.07102 16.1421C7.80581 16.1421 7.55145 16.0368 7.36392 15.8492L0.292848 8.77816C0.105312 8.59063 -4.46524e-05 8.33627 -4.46524e-05 8.07106C-4.46524e-05 7.80584 0.105312 7.55149 0.292848 7.36395L7.36392 0.292883C7.55145 0.105347 7.80581 -1.00522e-05 8.07102 -1.00522e-05C8.33624 -1.00522e-05 8.59059 0.105347 8.77813 0.292883C8.96567 0.48042 9.07102 0.734774 9.07102 0.99999C9.07102 1.26521 8.96567 1.51956 8.77813 1.7071L3.41402 7.07121L15.1421 7.07121Z"
@@ -146,8 +156,8 @@
         <div class="table-box mb-5">
           <div class="table-responsive">
             <table class="table align-middle">
-              <thead class="">
-                <tr class="">
+              <thead>
+                <tr>
                   <th class="p-0 pb-4 fs-4">Title</th>
                 </tr>
               </thead>
@@ -162,7 +172,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h2 class="modal-title text-dark">Add new book</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
               <div class="modal-body">
@@ -186,7 +196,7 @@
                   <input id="add-image" type="text" class="form-control mb-3" placeholder="Image URL" required />
                   <p id="add-book-message"></p>
 
-                  <button type="submit" class="btn btn-dark">Add book</button>
+                  <button type="submit" class="btn btn-dark" aria-label="Add new book">Add book</button>
                 </form>
               </div>
             </div>

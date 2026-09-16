@@ -29,8 +29,8 @@ function renderBooks(books) {
   tableBody.innerHTML = books
     .map(book => {
       return `
-        <tr class="d-flex flex-row justify-content-between">
-            <td class="p-0 fs-5">${book.title}</td>
+        <tr class="d-flex flex-row justify-content-between align-items-center">
+            <td class="table-book-title p-0 fs-5">${book.title}</td>
             <td class="d-flex gap-4">
                 <button class="btn btn-outline-info edit-book-btn" data-id="${book._id}">
                     Edit
