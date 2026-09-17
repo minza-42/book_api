@@ -59,7 +59,6 @@ async function login() {
         document.getElementById('login-message').className = 'alert alert-danger';
         document.getElementById('login-message').innerHTML = 'Login failed. Please check your credentials';
       }
-      console.log(data);
     } catch (error) {
       console.error('Error:', error);
     }

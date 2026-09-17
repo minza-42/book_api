@@ -47,7 +47,7 @@ async function loadAccount() {
 
   const user = await response.json();
   document.getElementById('account-username').innerText = user.username;
-  document.getElementById('account-created').innerText = new Date(user.created_at).toLocaleDateString('sv-SE');
+  document.getElementById('account-created').innerText = new Date(user.created_at).toLocaleDateString('en-GB');
 }
 
 async function updateAccount() {
@@ -76,7 +76,9 @@ async function updateAccount() {
     await loadAccount();
     const successMsg = document.getElementById('edit-account-msg');
     successMsg.classList.remove('invisible');
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 const editAccountForm = document.getElementById('edit-account-form');
