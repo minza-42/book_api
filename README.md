@@ -21,14 +21,14 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 - Search books by title or author
 - Sort books alphabetically
 - View reviews connected to a book
-- Admin can add, edit and delete book in library
 
 ### Users
 
 - Register account
 - Log in and log out
-- View update and delete account information in Settings
-- Admin can view and delete users in All users
+- View and update account information
+- Delete account
+- Admin can view and manage users
 
 ### Reviews
 
@@ -151,19 +151,19 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 <td></td>
 <td>POST</td>
 <td><code>/api/reviews</code></td>
-<td>Authenticated</td>
+<td>Public</td>
 </tr>
 <tr>
 <td></td>
 <td>PATCH</td>
 <td><code>/api/reviews/:id</code></td>
-<td>Admin</td>
+<td>Authenticated</td>
 </tr>
 <tr>
 <td></td>
 <td>DELETE</td>
 <td><code>/api/reviews/:id</code></td>
-<td>Admin</td>
+<td>Authenticated</td>
 </tr>
 </table>
 
@@ -172,7 +172,7 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 ### 1. Clone the repository
 
 ```bash
-git clone <https://github.com/minza-42/API-grupp-3.git>
+git clone <repository-url>
 cd API-grupp-3
 ```
 
@@ -219,23 +219,25 @@ Open:
 ## Project structure
 
 ```text
-api/
-  index.ts
-src/
-  controllers/
-  middleware/
-  models/
-  routes/
-  utils/
-public/
-  css/
-  images/
-  js/
-  index.html
-  book.html
-  library.html
-  settings.html
-  users.html
+├── api/
+│   └── index.ts
+│
+├── src/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── utils/
+│
+└── public/
+    ├── css/
+    ├── images/
+    ├── js/
+    ├── index.html
+    ├── book.html
+    ├── library.html
+    ├── settings.html
+    └── users.html
 ```
 
 ## Group members and responsibilities
