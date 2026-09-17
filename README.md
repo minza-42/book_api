@@ -21,14 +21,14 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 - Search books by title or author
 - Sort books alphabetically
 - View reviews connected to a book
+- Admin can add, edit and delete book in library
 
 ### Users
 
 - Register account
 - Log in and log out
-- View and update account information
-- Delete account
-- Admin can view and manage users
+- View update and delete account information in Settings
+- Admin can view and delete users in All users
 
 ### Reviews
 
@@ -151,19 +151,19 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 <td></td>
 <td>POST</td>
 <td><code>/api/reviews</code></td>
-<td>Public</td>
+<td>Authenticated</td>
 </tr>
 <tr>
 <td></td>
 <td>PATCH</td>
 <td><code>/api/reviews/:id</code></td>
-<td>Authenticated</td>
+<td>Admin</td>
 </tr>
 <tr>
 <td></td>
 <td>DELETE</td>
 <td><code>/api/reviews/:id</code></td>
-<td>Authenticated</td>
+<td>Admin</td>
 </tr>
 </table>
 
@@ -172,7 +172,7 @@ Bookmark is a fullstack book application created as a group assignment in the AP
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/minza-42/API-grupp-3.git>
 cd API-grupp-3
 ```
 
