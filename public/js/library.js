@@ -10,8 +10,8 @@ addModal.addEventListener('hide.bs.modal', () => {
   document.activeElement.blur();
 });
 
-async function getBooks() {
-  const response = await fetch(API_URL + '/books');
+async function getBooks(searchQuery = '') {
+  const response = await fetch(API_URL + `/books?search=${searchQuery}&sort=asc`);
 
   if (!response.ok) {
     throw new Error('Could not fetch books');
@@ -22,6 +22,16 @@ async function getBooks() {
   return books;
 }
 
+const serachInput = document.getElementById('search-input');
+
+serachInput.addEventListener('input', async () => {
+  const books = await getBooks(serachInput.value);
+
+  renderBooks(books);
+  handleEditBtns(books);
+  handleDeleteBtns();
+});
+
 function renderBooks(books) {
   const tableBody = document.getElementById('library-table-body');
 
@@ -30,7 +40,10 @@ function renderBooks(books) {
     .map(book => {
       return `
         <tr class="d-flex flex-row justify-content-between align-items-center">
-            <td class="table-book-title p-0 fs-5">${book.title}</td>
+          
+            <td class="table-book-title p-0 fs-5 border-bottom">${book.title}
+            </td>
+            <small class="fst-italic d-block"> by: ${book.author}</small>
             <td class="d-flex gap-4">
                 <button class="btn btn-outline-info edit-book-btn" data-id="${book._id}">
                     Edit
