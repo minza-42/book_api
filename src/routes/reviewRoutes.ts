@@ -14,7 +14,7 @@ import { verifyToken } from '../middleware/verifyToken';
 
 router.get('/', getAllReviews);
 router.get('/:id', getSpecificReview);
-router.post('/', postReview);
+router.post('/', verifyToken, postReview);
 router.patch('/:id', verifyToken, verifyAdmin, patchReview);
 router.delete('/:id', verifyToken, verifyAdmin, deleteReview);
 
