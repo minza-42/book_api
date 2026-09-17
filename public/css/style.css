@@ -64,6 +64,10 @@ tr {
 .card-img-top {
   aspect-ratio: 2 / 3;
 }
+.book-info {
+  display: grid;
+  grid-template-rows: 3.8rem 4rem 2.5rem 4.5rem;
+}
 
 /* =========================
    Book page

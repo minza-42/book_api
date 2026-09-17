@@ -48,18 +48,18 @@ async function getBooks(searchQuery = '') {
 
           <div class="card-body d-flex flex-column">
 
-            <h2 class="card-title mb-3 fs-4 fw-bold">${book.title}</h2>
-            <p class="card-text author">
-              <strong>Author:</strong> ${book.author}
-            </p>
-
-            <p class="card-text year">
-              <strong>Year:</strong> ${book.published_year}
-            </p>
-
-            <p class="card-text genres">
-              <strong>Genres:</strong> ${book.genres.join(', ')}
-            </p>
+            <div class="book-info">
+              <h2 class="card-title fs-5 fw-bold mt-2">${book.title}</h2>
+              <p class="card-text mt-3 author">
+                <strong>Author:</strong> ${book.author}
+              </p>
+              <p class="card-text year">
+                <strong>Year:</strong> ${book.published_year}
+              </p>
+              <p class="card-text genres">
+                <strong>Genres:</strong>${book.genres.join(', ')}
+              </p> 
+            </div>
 
             <button class="btn btn-light view-book-btn px-3 mt-auto align-self-start">
               View book
