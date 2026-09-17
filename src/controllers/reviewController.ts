@@ -38,7 +38,7 @@ export const postReview = async (req: Request, res: Response) => {
   try {
     const book = await Book.findById(book_id);
     if (!book) {
-      res.status(404).json({ error: 'Book not found' });
+      return res.status(404).json({ error: 'Book not found' });
     }
     const review = await Review.create({ name, content, rating, book_id });
     return res.status(201).json({ message: 'Review added', review });

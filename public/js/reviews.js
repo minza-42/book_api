@@ -49,7 +49,7 @@ function addReviewToList(review, canDelete = false) {
 
   reviewCard.classList.add('col-lg-4', 'col-md-6', 'col-12', 'mb-4');
 
-  const createdDate = new Date(review.created_at).toLocaleDateString('sv-SE');
+  const createdDate = new Date(review.created_at).toLocaleDateString('en-GB');
 
   reviewCard.innerHTML = `
     <div class="card h-100 shadow-sm">
