@@ -57,7 +57,7 @@ async function getBooks(searchQuery = '') {
                 <strong>Year:</strong> ${book.published_year}
               </p>
               <p class="card-text genres">
-                <strong>Genres:</strong>${book.genres.join(', ')}
+                <strong>Genres:</strong> ${book.genres.join(', ')}
               </p> 
             </div>
 

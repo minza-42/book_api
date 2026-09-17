@@ -75,6 +75,7 @@ function handleEditBtns(books) {
       document.getElementById('edit-description').value = selectedBook.description;
       document.getElementById('edit-genres').value = selectedBook.genres.join(', ');
       document.getElementById('edit-year').value = selectedBook.published_year;
+      document.getElementById('edit-image').value = selectedBook.image;
       // Opens modal
       const modal = new bootstrap.Modal(document.getElementById('edit-book-modal'));
       modal.show();
@@ -143,6 +144,7 @@ editForm.addEventListener('submit', async event => {
       .value.split(',')
       .map(genre => genre.trim()),
     published_year: Number(document.getElementById('edit-year').value),
+    image: document.getElementById('edit-image').value,
   };
 
   try {
