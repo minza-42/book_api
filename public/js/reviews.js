@@ -66,9 +66,6 @@ function addReviewToList(review) {
         </div>
 
         <div class="mt-3 review-actions">
-          <button type="button" class="btn btn-outline-info edit-review-btn" data-id="${review._id}">
-            Edit
-          </button>
           <button type="button" class="btn btn-danger delete-review-btn" data-id="${review._id}">
             Delete
           </button>
