@@ -6,7 +6,7 @@ function renderUsers(users) {
       return `
           <tr class="fs-6">
             <td class="p-0">${user.username}</td>
-            <td class="p-0">${user.is_admin ? 'Yes' : 'No'}</td>
+            <td class="p-0 ps-3">${user.is_admin ? 'Yes' : 'No'}</td>
             <td class="p-0">${new Date(user.created_at).toLocaleDateString('en-GB')}</td>
             <td class="text-end">
               <button
