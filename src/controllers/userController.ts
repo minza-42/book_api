@@ -45,15 +45,20 @@ export const getUser = async (req: Request, res: Response) => {
 };
 
 //UPDATE
-export const patchUser = async (req: Request, res: Response) => {
+export const patchUser = async (req: AuthRequest, res: Response) => {
   try {
     const id = req.params.id as string;
+
+    if (req.user?.userId !== id) {
+      res.status(403).json({ message: 'Forbidden' });
+      return;
+    }
     const { username, password } = req.body;
     if (username === undefined && password === undefined) {
       res.status(400).json({ message: 'At least one field is required' });
       return;
     }
-    // No empty fileds allowed and mininum of characters
+    // No empty fields allowed and mininum of characters
     if (username !== undefined && username.trim().length < 3) {
       res.status(400).json({
         message: 'Unsername must be at least 3 characters',
@@ -115,7 +120,7 @@ export const deleteUser = async (req: AuthRequest, res: Response) => {
       });
       return;
     }
-    // NOT admin user must confrm with password
+    // Non-admin user must confrm with password
     if (!isAdmin) {
       if (!password) {
         res.status(400).json({
@@ -133,7 +138,7 @@ export const deleteUser = async (req: AuthRequest, res: Response) => {
       }
     }
     await User.deleteOne({ _id: id });
-    res.json({ message: 'User delted' });
+    res.json({ message: 'User deleted' });
   } catch (error) {
     res.status(500).json({
       message: 'Internal server error',
