@@ -13,8 +13,13 @@ export const getBooks = async (req: Request, res: Response) => {
     let filter: {} = {};
 
     if (search) {
+      // Allows search to match names with or without dots
+      const flexibleSearch = search.split('').join('\\.?');
       filter = {
-        $or: [{ title: { $regex: search, $options: 'i' } }, { author: { $regex: search, $options: 'i' } }],
+        $or: [
+          { title: { $regex: flexibleSearch, $options: 'i' } },
+          { author: { $regex: flexibleSearch, $options: 'i' } },
+        ],
       };
     }
     let sortBooks: {} = {};
