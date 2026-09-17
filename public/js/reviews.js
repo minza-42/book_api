@@ -28,7 +28,8 @@ async function postReview() {
   const data = await response.json();
   console.log(data);
 
-  addReviewToList(data.review);
+  const user = await getCurrentUser();
+  addReviewToList(data.review, user?.is_admin === true);
 
   reviewForm.reset();
 }
@@ -43,7 +44,7 @@ reviewForm.addEventListener('submit', event => {
 // ----------------- ADD REVIEW TO LIST -------------------
 // --------------------------------------------------------
 
-function addReviewToList(review) {
+function addReviewToList(review, canDelete = false) {
   const reviewCard = document.createElement('article');
 
   reviewCard.classList.add('col-lg-4', 'col-md-6', 'col-12', 'mb-4');
@@ -65,18 +66,24 @@ function addReviewToList(review) {
           <small class="text-muted">${createdDate}</small>
         </div>
 
-        <div class="mt-3 review-actions">
-          <button type="button" class="btn btn-danger delete-review-btn" data-id="${review._id}">
-            Delete
-          </button>
-        </div>
+        ${
+          canDelete
+            ? `
+          <div class="mt-3 review-actions">
+            <button type="button" class="btn btn-danger delete-review-btn" data-id="${review._id}">
+              Delete
+            </button>
+          </div>
+        `
+            : ''
+        }
       </div>
     </div>  
   `;
   reviewsList.appendChild(reviewCard);
 }
 
-function handleDeleteReviewBtns() {
+function handleDeleteReviewBtns(user) {
   document.querySelectorAll('.delete-review-btn').forEach(button => {
     button.addEventListener('click', async () => {
       const reviewId = button.dataset.id;
@@ -94,19 +101,7 @@ function handleDeleteReviewBtns() {
         if (!response.ok) {
           throw new Error('Unable to delete review');
         }
-        await showReviews();
-        try {
-          const user = await getCurrentUser();
-
-          if (!user?.is_admin) {
-            console.log('Access denied');
-            return;
-          }
-          console.log('Admin verified');
-          handleDeleteReviewBtns();
-        } catch (error) {
-          console.log(error);
-        }
+        await showReviews(user);
       } catch (error) {
         console.log(error);
       }
@@ -131,18 +126,10 @@ async function showReviews(user) {
   reviewsList.innerHTML = '';
 
   reviews.forEach(review => {
-    addReviewToList(review);
+    addReviewToList(review, user?.is_admin === true);
   });
 
-  if (!user || (user && user.is_admin === false)) {
-    const reviewActions = document.querySelectorAll('.review-actions');
-
-    reviewActions.forEach(container => {
-      container.classList.add('d-none');
-    });
-  }
-
-  handleDeleteReviewBtns();
+  handleDeleteReviewBtns(user);
 }
 
 async function showReviewFormForUser() {
