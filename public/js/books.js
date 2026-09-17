@@ -34,7 +34,7 @@ async function getBooks(searchQuery = '') {
     books.forEach(book => {
       const bookCard = document.createElement('div');
 
-      bookCard.classList.add('col-lg-4', 'col-md-6', 'col-12', 'mb-4');
+      bookCard.classList.add('col-xl-3', 'col-lg-4', 'col-md-6', 'col-12', 'mb-4');
 
       bookCard.innerHTML = `
         <div class="card text-white bg-black bg-opacity-50 shadow h-100">
@@ -48,8 +48,7 @@ async function getBooks(searchQuery = '') {
 
           <div class="card-body d-flex flex-column">
 
-            <h2 class="card-title mb-3">${book.title}</h2>
-
+            <h2 class="card-title mb-3 fs-4 fw-bold">${book.title}</h2>
             <p class="card-text author">
               <strong>Author:</strong> ${book.author}
             </p>
