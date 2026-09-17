@@ -5,7 +5,7 @@ import Book from '../models/Book';
 
 export const getAllReviews = async (_req: Request, res: Response) => {
   try {
-    const result = await Review.find({}, {}); // TODO: Add .sort() and .populate() later for sorting and book population
+    const result = await Review.find({}, {});
     if (result.length === 0) {
       return res.status(400).json({ error: 'No reviews found' });
     }
@@ -19,7 +19,7 @@ export const getSpecificReview = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
-    const review = await Review.findOne({ _id: id }, {}); // TODO: Add .populate() later for book population
+    const review = await Review.findOne({ _id: id }, {});
     if (!review) {
       return res.status(400).json({ error: 'Review not found' });
     }
@@ -28,20 +28,6 @@ export const getSpecificReview = async (req: Request, res: Response) => {
     return res.status(500).json({ error: 'Failed to fetch review from to database' });
   }
 };
-
-// export const getReviewsToSpecificBook = async (req: Request, res: Response) => {
-//   const bookId = req.params.id;
-
-//   try {
-//     const reviews = await Review.find({ book_id: bookId }, {});
-//     if (reviews.length === 0) {
-//       return res.status(200).json({ message: 'No reviews found for this book' });
-//     }
-//     return res.status(200).json({ reviews });
-//   } catch (error) {
-//     return res.status(500).json({ error: 'Failed to fetch review from to database' });
-//   }
-// };
 
 export const postReview = async (req: Request, res: Response) => {
   const { name, content, rating, book_id } = req.body;
