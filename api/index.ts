@@ -93,3 +93,15 @@ mongoose
   .catch(error => {
     console.log('MongoDB connection error:', error);
   });
+
+// Export the Express app for Vercel
+export default app;
+
+// Start the server locally during development
+if (!process.env.VERCEL) {
+  const PORT = 3000;
+
+  app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+  });
+}
